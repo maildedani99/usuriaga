@@ -25,14 +25,9 @@ export const data = [
        "info": "Vestido Maxi Gas",
        "precio": "21,50"
     },
+   
     {
         "id":5,
-       "pic": "/static/media/2DCD986C-FA85-4F3B-A47B-8720D2701B0C.6c149c9c5d9879aa2234.JPG",
-       "info": "Mono Multiway Estampado",
-       "precio": "37,00"
-    },
-    {
-        "id":6,
        "pic": "/static/media/5590760E-4BA2-408A-85D5-789C4E3FE3BA.238dfb851d5cf8fa4506.JPG",
        "info": "Vestido Multiway Thai",
        "precio": "21"
