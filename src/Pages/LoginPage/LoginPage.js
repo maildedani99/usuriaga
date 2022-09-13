@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const LoginPage = (props) => {
   return (
@@ -17,7 +18,7 @@ const LoginPage = (props) => {
           type="text"
           name="usuario"
           placeholder="Contraseña *"
-              />
+        />
         <span className="mt-4 mx-auto">¿Olvidaste la contraseña?</span>
         <input
           className="mt-16 p-4 text-xl text-white w-5/6 mx-auto text-center mb-8"
@@ -25,8 +26,10 @@ const LoginPage = (props) => {
           style={{ backgroundColor: "#dac895" }}
         />
         <div className="flex w-5/6 mx-auto justify-center">
-          <span className="font-light mr-2" >¿No estás registrado?  </span>
-          <span  >Registrarse</span>
+          <span className="font-light mr-2">¿No estás registrado? </span>
+          <Link to="/registerPage">
+            <span >Registrarse</span>
+          </Link>
         </div>
       </div>
     </div>
