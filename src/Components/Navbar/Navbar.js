@@ -6,12 +6,7 @@ import bag from "../../assets/bag.svg";
 import { FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
 import { navLinkStyle, navLinkStyleHover } from "../../astyles/navbarStyles";
 
-
 const Navbar = (props) => {
-  const [navLinkStatus, setNavLinkStatus] = useState(navLinkStyle)
-  
-  const navLinkHover = () => setNavLinkStatus(navLinkStyleHover)
-
   return (
     <div className="flex w-full fixed flex-col bg-white	">
       <div
@@ -33,14 +28,17 @@ const Navbar = (props) => {
       </div> */}
         <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
-            <span style={navLinkStyle}  >NOVEDADES</span>
-            <span className="mx-6">COLECCION</span>
-            <span className="mx-6">ZAPATOS</span>
-            <span className="mx-6">REBAJAS</span>
+            <span className="mx-6 cursor-pointer">NOVEDADES</span>
+            <span className="mx-6 cursor-pointer">COLECCION</span>
+            <span className="mx-6 cursor-pointer">ZAPATOS</span>
+            <span className="mx-6 cursor-pointer">REBAJAS</span>
           </div>
         </div>
         <div className="flex  	align-middle	p-10 justify-center w-3/12 max-w-sm">
-          <div className="flex w-4/6 justify-between	">
+          <div
+            className="flex w-4/6 justify-between	"
+            onMouseEnter={() => console.log("hover ")}
+          >
             <FiSearch size={28} color="#636364" />
             <FiUser size={28} color="#636364" />
             <FiShoppingCart size={28} color="#636364" />
