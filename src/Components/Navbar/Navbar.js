@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import logo from "../../assets/logonegro.png";
 import logo2 from "../../assets/logonegrofull.png";
 import bag from "../../assets/bag.svg";
 import { FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
-import { IconName } from "react-icons/bi";
+import { navLinkStyle, navLinkStyleHover } from "../../astyles/navbarStyles";
+
 
 const Navbar = (props) => {
+  const [navLinkStatus, setNavLinkStatus] = useState(navLinkStyle)
+  
+  const navLinkHover = () => setNavLinkStatus(navLinkStyleHover)
+
   return (
     <div className="flex w-full fixed flex-col bg-white	">
       <div
@@ -20,22 +25,22 @@ const Navbar = (props) => {
       <div
         className="flex flex-row flex-1 border-b " /* style={{backgroundColor:"#dac895"}}  */
       >
-        <div className=" p-6 	">
+        <div className=" p-6 w-3/12	my-auto">
           <img src={logo} alt="Usuriaga" width="300" />
         </div>
         {/*  <div className=" p-8 	">
         <img src={logo2} alt="Usuriaga" width="300" />
       </div> */}
-        <div className="flex w-3/5 justify-center">
+        <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
-            <span className="mx-6">NOVEDADES</span>
+            <span style={navLinkStyle}  >NOVEDADES</span>
             <span className="mx-6">COLECCION</span>
             <span className="mx-6">ZAPATOS</span>
             <span className="mx-6">REBAJAS</span>
           </div>
         </div>
-        <div className="flex flex-1 	align-middle	p-10 justify-center">
-          <div className="flex w-3/6 justify-between	">
+        <div className="flex  	align-middle	p-10 justify-center w-3/12 max-w-sm">
+          <div className="flex w-4/6 justify-between	">
             <FiSearch size={28} color="#636364" />
             <FiUser size={28} color="#636364" />
             <FiShoppingCart size={28} color="#636364" />

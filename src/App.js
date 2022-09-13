@@ -11,13 +11,15 @@ function App() {
   }
 
   return (
-    password == "pruebas" ?
+
+    <Landing />
+    /* password == "pruebas" ?
       <Landing />
       :
       
         <div className="text-2xl border-solid	border-black mx-32 my-32	">
           <input type="text" name="pasword" id="1" placeholder="password" autoFocus onChange={inputHandler}/>
-        </div>
+        </div> */
   )
       
 }
