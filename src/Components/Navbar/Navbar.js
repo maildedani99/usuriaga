@@ -5,10 +5,14 @@ import logo2 from "../../assets/logonegrofull.png";
 import bag from "../../assets/bag.svg";
 import { FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
 import { navLinkStyle, navLinkStyleHover } from "../../astyles/navbarStyles";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = (props) => {
+  const activeStyleLink = {
+    fontSize: "40",
+  };
+
   return (
     <div className="flex w-full fixed flex-col bg-white	">
       <div
@@ -28,30 +32,89 @@ const Navbar = (props) => {
         {/*  <div className=" p-8 	">
         <img src={logo2} alt="Usuriaga" width="300" />
       </div> */}
-        <div className="flex w-6/12 justify-center ">
+        <div className="flex w-6/12 justify-center  ">
           <div className=" self-center">
-          
-            <Link to="/newsPage">
-              <span className="mx-6 cursor-pointer">NOVEDADES</span>
-            </Link>
-            <Link to="/loginPage">
-              <div className="dropdown">
-                <span className="mx-6 cursor-pointer">ROPA</span>
-                <div className="dropdown-content">
-                  <Link to="/loginPage">
-                    <span>TOPS/BODIES</span><br/>
-                    <span>CAMISAS</span><br/>
-                    <span>CAMISETAS</span><br/>
-                    <span>FALDAS / SHORTS</span><br/>
-                    <span>PANTALONES</span>
-                  </Link>
-                  
+            <NavLink to="/newsPage">
+              <span className="mx-6  cursor-pointer hover:text-primary ">
+                NOVEDADES
+              </span>
+            </NavLink>
+            <NavLink
+              to="/loginPage"
+              /*   style={({ isActive }) => ({
+                color: isActive ? "#DAC895" : "#000000",
+              })} */
+            >
+              <div className="dropdown ">
+                <div className="hover:text-primary">
+                  <span className=" mx-6 cursor-pointer ">ROPA</span>
+                </div>
+                <div className="dropdown-content text-sm">
+                  <NavLink to="/loginPage">
+                    <span className="hover:text-primary">TOPS / BODIES</span>
+                  </NavLink>
+                  <br />
+                  <span className="hover:text-primary">CAMISAS / BLUSAS</span>
+                  <br />
+                  <span className="hover:text-primary">CAMISETAS</span>
+                  <br />
+                  <span className="hover:text-primary">FALDAS / SHORTS</span>
+                  <br />
+                  <span className="hover:text-primary">PANTALONES</span>
+                  <br />
+                  <span className="hover:text-primary">
+                    JERSEYS / SUDADERAS
+                  </span>
+                  <br />
+                  <span className="hover:text-primary">
+                    ABRIGOS / CHAQUETAS
+                  </span>
                 </div>
               </div>
-            </Link>
-            <span className="mx-6 cursor-pointer">ACCESORIOS</span>
-            <span className="mx-6 cursor-pointer">REBAJAS</span>
-            <span className="mx-6 cursor-pointer">COLECCIONES</span>
+            </NavLink>
+            <NavLink to="/loginPage">
+              <div className="dropdown">
+                <div className="hover:text-primary">
+                  <span className="mx-6 cursor-pointer hover:text-primary">
+                    ACCESORIOS
+                  </span>
+                </div>
+                <div className="dropdown-content text-sm">
+                  <NavLink to="/loginPage">
+                    <span className="hover:text-primary">ZAPATOS</span>
+                    <br />
+                    <span className="hover:text-primary">BOLSOS</span>
+                    <br />
+                    <span className="hover:text-primary">COLGANTES</span>
+                    <br />
+                    <span className="hover:text-primary">PENDIENTES</span>
+                    <br />
+                    <span className="hover:text-primary">
+                      BUFANDAS / FOULARES
+                    </span>
+                  </NavLink>
+                </div>
+              </div>
+            </NavLink>
+            <div className="dropdown">
+              <div className="hover:text-primary">
+                <span className="mx-6 cursor-pointer hover:text-primary">
+                  COLECCIONES
+                </span>
+              </div>
+              <div className="dropdown-content text-sm">
+                <NavLink to="/loginPage">
+                  <span className="hover:text-primary">NAVIDAD</span>
+                  <br />
+                  <span className="hover:text-primary">FIESTA</span>
+                  <br />
+                  <span className="hover:text-primary">EVENTOS</span>
+                </NavLink>
+              </div>
+            </div>
+            <span className="mx-6 cursor-pointer hover:text-primary">
+              REBAJAS
+            </span>
           </div>
         </div>
         <div className="flex  	align-middle	p-10 justify-center w-3/12 max-w-sm">
@@ -60,11 +123,11 @@ const Navbar = (props) => {
             onMouseEnter={() => console.log("hover ")}
           >
             <FiSearch size={28} color="#636364" />
-            <Link to="/loginPage">
+            <NavLink to="/loginPage">
               <span className="cursor-pointer">
                 <FiUser size={28} color="#636364" />
               </span>
-            </Link>
+            </NavLink>
             <FiShoppingCart size={28} color="#636364" />
           </div>
         </div>
