@@ -32,26 +32,22 @@ const Navbar = (props) => {
         {/*  <div className=" p-8 	">
         <img src={logo2} alt="Usuriaga" width="300" />
       </div> */}
-        <div className="flex w-6/12 justify-center  ">
+        <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
-            <NavLink to="/newsPage">
-              <span className="mx-6  cursor-pointer hover:text-primary ">
+            <NavLink to="/newsPage" className="navLink">
+              <span className=" mx-6   cursor-pointer hover:text-primary ">
                 NOVEDADES
               </span>
             </NavLink>
-            <NavLink
-              to="/loginPage"
-              /*   style={({ isActive }) => ({
-                color: isActive ? "#DAC895" : "#000000",
-              })} */
-            >
               <div className="dropdown ">
+            <NavLink className="navLink" to="/loginPage" >
                 <div className="hover:text-primary">
-                  <span className=" mx-6 cursor-pointer ">ROPA</span>
+                  <span className=" mx-6 cursor-pointer  ">ROPA</span>
                 </div>
-                <div className="dropdown-content text-sm">
-                  <NavLink to="/loginPage">
-                    <span className="hover:text-primary">TOPS / BODIES</span>
+                </NavLink>
+              <div className="dropdown-content text-sm">
+              <NavLink className="navLink" to="/loginPage" >
+                  <span className="hover:text-primary">TOPS / BODIES</span>
                   </NavLink>
                   <br />
                   <span className="hover:text-primary">CAMISAS / BLUSAS</span>
@@ -71,8 +67,10 @@ const Navbar = (props) => {
                   </span>
                 </div>
               </div>
-            </NavLink>
-            <NavLink to="/loginPage">
+            
+            <NavLink
+              className="navLink"
+              to="/loginPage">
               <div className="dropdown">
                 <div className="hover:text-primary">
                   <span className="mx-6 cursor-pointer hover:text-primary">
@@ -80,7 +78,9 @@ const Navbar = (props) => {
                   </span>
                 </div>
                 <div className="dropdown-content text-sm">
-                  <NavLink to="/loginPage">
+                  <NavLink
+                    className="navLink"
+                    to="/loginPage">
                     <span className="hover:text-primary">ZAPATOS</span>
                     <br />
                     <span className="hover:text-primary">BOLSOS</span>
@@ -103,7 +103,9 @@ const Navbar = (props) => {
                 </span>
               </div>
               <div className="dropdown-content text-sm">
-                <NavLink to="/loginPage">
+                <NavLink
+                  className="navLink"
+                  to="/loginPage">
                   <span className="hover:text-primary">NAVIDAD</span>
                   <br />
                   <span className="hover:text-primary">FIESTA</span>
@@ -123,7 +125,9 @@ const Navbar = (props) => {
             onMouseEnter={() => console.log("hover ")}
           >
             <FiSearch size={28} color="#636364" />
-            <NavLink to="/loginPage">
+            <NavLink
+              className="navLink"
+              to="/loginPage">
               <span className="cursor-pointer">
                 <FiUser size={28} color="#636364" />
               </span>

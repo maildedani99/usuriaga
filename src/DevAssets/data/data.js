@@ -45,6 +45,17 @@ export const item = {
   pic: "/static/media/04762B1F-9D8A-42F6-96FB-B1ED35F21655.e51da1a0866c362cb70e.JPG",
   info: "Vestido Hombreras Fruncido",
   precio: "43,00",
+  tallas: ["XS", "S", "M", "L", "XL",  ],
+  descripcion:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi in assumenda nostrum obcaecati modi iure asperiores officiis ex facilis, autem illo? Voluptatum doloribus illo veniam placeat. Rem veniam obcaecati minus, sint nihil quibusdam veritatis reprehenderit necessitatibus placeat eius cumque quo natus tempore aliquid enim porro exercitationem facilis? At, nesciunt placeat.",
+};
+
+export const item2 = {
+  id: 1,
+  pic: "/static/media/04762B1F-9D8A-42F6-96FB-B1ED35F21655.e51da1a0866c362cb70e.JPG",
+  info: "Vestido Hombreras Fruncido",
+  precio: "43,00",
+  tallas: ["34", "36", "38", "40", "42", "44"  ],
   descripcion:
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi in assumenda nostrum obcaecati modi iure asperiores officiis ex facilis, autem illo? Voluptatum doloribus illo veniam placeat. Rem veniam obcaecati minus, sint nihil quibusdam veritatis reprehenderit necessitatibus placeat eius cumque quo natus tempore aliquid enim porro exercitationem facilis? At, nesciunt placeat.",
 };

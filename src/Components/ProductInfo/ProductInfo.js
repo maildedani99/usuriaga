@@ -2,56 +2,81 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ProductCard from "../ProductCard/ProductCard";
 import pic from "../../DevAssets/Img/1C29092F-1EF9-46C6-96B7-D0D816E0B25B.JPG";
-import { item } from "../../DevAssets/data/data";
+import { item, item2 } from "../../DevAssets/data/data";
 import { FiPlus, FiMinus } from "react-icons/fi";
+import QuantitySelector from "../QuantitySelector/QuantitySelector";
+import '@coreui/coreui/dist/css/coreui.min.css'
+import { CCarousel, CCarouselItem, CImage } from '@coreui/react';
+import pic1 from '../../DevAssets/Img/04762B1F-9D8A-42F6-96FB-B1ED35F21655.JPG'
+import pic2 from '../../DevAssets/Img/262E5F1A-F105-4BB7-81B1-83EA49ECE53C.JPG'
+import pic3 from '../../DevAssets/Img/1C29092F-1EF9-46C6-96B7-D0D816E0B25B.JPG'
+
 
 const ProductInfo = (props) => {
   const [quantity, setQuantity] = useState(1);
 
-  const handlePlus = () => {
-    setQuantity(quantity + 1);
-  };
-  const handleMinus = () => {
-    quantity > 1 && setQuantity(quantity - 1);
-  };
-
   return (
     <div className="flex  w-2/3  mt-48 mx-auto justify-center ">
       <div className=" flex 	w-1/2 	">
-        <div className="mx-auto">
-          <img src={item.pic} alt="" />
+        <div className="mx-auto w-4/6 ">
+          <CCarousel dark controls indicators transition="crossfade" className="">
+            <CCarouselItem  >
+              <CImage
+                className="d-block mx-auto object-cover "
+                src={pic1}
+                alt="slide 1"
+              />
+            </CCarouselItem>
+            <CCarouselItem>
+              <CImage
+                className="d-block mx-auto"
+                src={pic2}
+                alt="slide 2"
+              />
+            </CCarouselItem>
+            <CCarouselItem>
+              <CImage
+                className="d-block mx-auto"
+                src={pic3}
+                alt="slide 3"
+              />
+            </CCarouselItem>
+          </CCarousel>
         </div>
       </div>
-      <div className="text-2xl flex flex-col	w-1/2 	">
+      <div className="text-2xl flex flex-col	w-1/2">
         <div className="flex flex-col p-8 text-justify mx-auto	w-5/6">
           <span className="text-3xl mt-4">{item.info}</span>
-          <span className="text-xl mt-4">{item.precio}€</span>
-          <span className="text-sm text-slate-500	mt-4">
-            {item.descripcion}{" "}
+          <span className="text-lg mt-4">{item.precio}€</span>
+          <span className="text-sm text-secondary 	mt-4">
+            {item.descripcion}
           </span>
         </div>
-        <div className="mx-auto text-slate-500">
-          <div className="flex border px-5 py-3 my-auto">
-            <FiMinus
-              size={18}
-              color="#636364"
-              className="mt-1.5 cursor-pointer"
-              onClick={handleMinus}
-            />
-            <span className="mx-6 select-none">{quantity}</span>
-            <FiPlus
-              size={18}
-              color="#636364"
-              className="mt-1.5"
-              onClick={handlePlus}
-            />
+        <div className="flex mx-auto w-5/6 p-8  text-lg justify-between">
+          <div>
+            <span className="text-secondary  ">Cantidad</span>
+            <div className="mt-1">
+              <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
+            </div>
+          </div>
+          <div className=" text-secondary flow-root ">
+            Tallas disponibles
+            <div className="flex  space-arround flex-wrap mt-1	 ">
+              {item.tallas.map((t) => (
+                <div className="border p-2 mx-1 text-base">
+                  <span>{t}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-        <input
-          className="mt-16 p-4 text-xl text-white w-4/6 mx-auto text-center mb-8 capitalize"
-          value="Comprar"
-          style={{ backgroundColor: "#dac895" }}
-        />
+        <div className="flex w-5/6 p-8 mx-auto">
+          <input
+            className=" flex flex-1 p-4 text-xl text-white   text-center mb-8 capitalize "
+            value="Comprar"
+            style={{ backgroundColor: "#dac895" }}
+          />
+        </div>
       </div>
     </div>
   );
