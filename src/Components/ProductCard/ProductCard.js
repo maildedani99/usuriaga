@@ -8,7 +8,7 @@ const ProductCard = ({ data }) => {
   console.log(data);
 
   const handleClick = () => {
-    navigate("/productView", { state: data });
+    navigate("/ProductInfo");
   };
 
   return (

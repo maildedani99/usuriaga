@@ -22,6 +22,7 @@ const Landing = (props) => {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<ProductInfo />} />
+          <Route exact path="/productInfo" element={<ProductInfo />} />
           <Route exact path="/newsPage" element={<NewsPage />} />
           <Route exact path="/loginPage" element={<LoginPage />} />
           <Route exact path="/registerPage" element={<RegisterPage />} />
