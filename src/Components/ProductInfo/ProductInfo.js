@@ -5,68 +5,47 @@ import pic from "../../DevAssets/Img/1C29092F-1EF9-46C6-96B7-D0D816E0B25B.JPG";
 import { item, item2 } from "../../DevAssets/data/data";
 import { FiPlus, FiMinus } from "react-icons/fi";
 import QuantitySelector from "../QuantitySelector/QuantitySelector";
-import '@coreui/coreui/dist/css/coreui.min.css'
-import { CCarousel, CCarouselItem, CImage } from '@coreui/react';
-import pic1 from '../../DevAssets/Img/04762B1F-9D8A-42F6-96FB-B1ED35F21655.JPG'
-import pic2 from '../../DevAssets/Img/262E5F1A-F105-4BB7-81B1-83EA49ECE53C.JPG'
-import pic3 from '../../DevAssets/Img/1C29092F-1EF9-46C6-96B7-D0D816E0B25B.JPG'
-
+import "@coreui/coreui/dist/css/coreui.min.css";
+import { CCarousel, CCarouselItem, CImage } from "@coreui/react";
+import pic1 from "../../DevAssets/Img/04762B1F-9D8A-42F6-96FB-B1ED35F21655.JPG";
+import pic2 from "../../DevAssets/Img/262E5F1A-F105-4BB7-81B1-83EA49ECE53C.JPG";
+import pic3 from "../../DevAssets/Img/1C29092F-1EF9-46C6-96B7-D0D816E0B25B.JPG";
 
 const ProductInfo = (props) => {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="flex  w-2/3  mt-48 mx-auto justify-center ">
-      <div className=" flex 	w-1/2 	">
-        <div className="mx-auto w-4/6 ">
-          <CCarousel dark controls indicators transition="crossfade" className="">
-            <CCarouselItem  >
-              <CImage
-                className="d-block mx-auto object-cover "
-                src={pic1}
-                alt="slide 1"
-              />
-            </CCarouselItem>
-            <CCarouselItem>
-              <CImage
-                className="d-block mx-auto"
-                src={pic2}
-                alt="slide 2"
-              />
-            </CCarouselItem>
-            <CCarouselItem>
-              <CImage
-                className="d-block mx-auto"
-                src={pic3}
-                alt="slide 3"
-              />
-            </CCarouselItem>
-          </CCarousel>
+    <div className="flex  w-5/6  mt-48 mx-auto justify-center ">
+      <div className=" flex 	w-4/6  top-10	">
+        <div className="mx-auto  flex flex-wrap ">
+          <img src={pic1} alt="" />
+          <img src={pic2} alt="" />
+          <img src={pic3} alt="" />
         </div>
       </div>
-      <div className="text-2xl flex flex-col	w-1/2">
-        <div className="flex flex-col p-8 text-justify mx-auto	w-5/6">
+      <div className="text-2xl flex flex-col  	w-2/6 ">
+        <div className="flex flex-col p-8 text-justify mx-auto	w-6/6">
           <span className="text-3xl mt-4">{item.info}</span>
           <span className="text-lg mt-4">{item.precio}€</span>
           <span className="text-sm text-secondary 	mt-4">
             {item.descripcion}
           </span>
         </div>
-        <div className="flex mx-auto w-5/6 p-8  text-lg justify-between">
-          <div>
-            <span className="text-secondary  ">Cantidad</span>
-            <div className="mt-1">
-              <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
-            </div>
-          </div>
-          <div className=" text-secondary flow-root ">
-            Tallas disponibles
+        <div className="flex flex-col mx-auto w-5/6   text-lg justify-between">
+          <div className="flex text-secondary  ">
+            {/* Tallas disponibles */}
             <div className="flex  space-arround flex-wrap mt-1	 ">
               {item.tallas.map((t) => (
                 <div className="border p-2 mx-1 text-base">
                   <span>{t}</span>
                 </div>
               ))}
+            </div>
+          </div>
+          <div className="flex ">
+            {/*  <span className="text-secondary  ">Cantidad</span> */}
+            <div className="mt-1">
+              <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
             </div>
           </div>
         </div>
