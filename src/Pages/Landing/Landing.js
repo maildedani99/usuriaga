@@ -14,6 +14,7 @@ import pic6 from "../../DevAssets/Img/E316D8B5-6AC7-4C0F-9AD4-9BA47DD047D6.JPG"
 import ProductsView from "../ProductsView/ProductsView";
 import ProductView from "../ProductView/ProductView";
 import ProductInfo from "../../Components/ProductInfo/ProductInfo";
+import CartPage from "../CartPage/CartPage";
 
 const Landing = (props) => {
   return (
@@ -23,6 +24,7 @@ const Landing = (props) => {
         <Routes>
           <Route exact path="/" element={<ProductInfo />} />
           <Route exact path="/productInfo" element={<ProductInfo />} />
+          <Route exact path="/cartPage" element={<CartPage />} />
           <Route exact path="/newsPage" element={<NewsPage />} />
           <Route exact path="/loginPage" element={<LoginPage />} />
           <Route exact path="/registerPage" element={<RegisterPage />} />

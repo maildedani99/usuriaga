@@ -67,7 +67,11 @@ const Navbar = (props) => {
                 <FiUser size={28} color="#636364" />
               </span>
             </NavLink>
-            <FiShoppingCart size={28} color="#636364" />
+            <NavLink className="navLink" to="/cartPage">
+              <span className="cursor-pointer">
+                <FiShoppingCart size={28} color="#636364" />
+              </span>
+            </NavLink>
           </div>
         </div>
       </div>
