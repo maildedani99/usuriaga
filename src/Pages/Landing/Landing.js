@@ -22,7 +22,7 @@ const Landing = (props) => {
       <div className="flex flex-col flex-1 w-100	">
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<ProductInfo />} />
+          <Route exact path="/" element={<ProductsView />} />
           <Route exact path="/productInfo" element={<ProductInfo />} />
           <Route exact path="/cartPage" element={<CartPage />} />
           <Route exact path="/newsPage" element={<NewsPage />} />

@@ -2,23 +2,23 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ data }) => {
+const ProductCard = ({ product }) => {
   const navigate = useNavigate();
 
-  console.log(data);
 
   const handleClick = () => {
-    navigate("/ProductInfo");
+    navigate("/productInfo", { state: product });
   };
+  console.log(product.images[0])
 
   return (
     <div
       className="flex flex-col w-3/12 p-2 justify-center cursor-pointer mt-8"
       onClick={handleClick}
     >
-      <img src={data.pic} alt="foto" />
-      <span className=" text-xl mx-auto mt-2">{data.info}</span>
-      <span className=" text-xl mx-auto mt-2 ">{data.precio} €</span>
+      <img src={product.images[0].url && product.images[0].url} alt="foto" />
+      <span className=" text-xl mx-auto mt-2">{product.name}</span>
+      <span className=" text-xl mx-auto mt-2 ">{product.price} €{ product.category_id}</span>
       <input
         type="button"
         value="Añadir al carrito "
