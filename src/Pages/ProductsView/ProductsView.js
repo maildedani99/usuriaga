@@ -26,7 +26,6 @@ const ProductsView = props => {
             }
         )
         .then(payload => {
-                console.log("All products");
                 setProducts(payload);
             }
         )

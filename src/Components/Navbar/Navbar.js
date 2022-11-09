@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import logo from "../../assets/logonegro.png";
 import logo2 from "../../assets/logonegrofull.png";
@@ -10,9 +10,33 @@ import "./navbar.css";
 import { navbarData } from "./navbarData";
 
 const Navbar = (props) => {
-  const activeStyleLink = {
-    fontSize: "40",
-  };
+
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    const url = 'http://127.0.0.1:8000/api/categories/all';
+    const options = {
+        method: 'GET',
+        headers: new Headers(),
+    };
+
+    fetch(url, options)
+        .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                }
+                return Promise.reject(response.status);
+            }
+        )
+        .then(payload => {
+          setCategories(payload);
+          console.log(categories)
+            }
+        )
+        .catch(error => console.log(error));
+  }, []);
+
+  
 
   return (
     <div className="flex w-full fixed flex-col bg-white	">
@@ -32,23 +56,15 @@ const Navbar = (props) => {
         </div>
         <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
-            {navbarData.map((item) => (
+            {categories.map((item) => (
               <div className="dropdown ">
-                <NavLink to={item.link} className="navLink hover:text-primary ">
-                  <span className=" mx-6 uppercase   cursor-pointer  ">
+                  <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
                     {item.name}
                   </span>
-                </NavLink>
-                {item.submenu && (
+                {item.subcategories && (
                   <div className="dropdown-content text-sm">
-                    {item.submenu.map((subitem) => (
-                      <NavLink
-                        className="navLink hover:text-primary"
-                        to={subitem.link}
-                      >
-                        <span className="uppercase">{subitem.name}</span>
-                        <br />
-                      </NavLink>
+                    {item.subcategories.map((subitem) => (
+                        <span className="uppercase navLink hover:text-primary block">{subitem.name}</span>
                     ))}
                   </div>
                 )}

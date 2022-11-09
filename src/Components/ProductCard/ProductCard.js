@@ -9,7 +9,6 @@ const ProductCard = ({ product }) => {
   const handleClick = () => {
     navigate("/productInfo", { state: product });
   };
-  console.log(product.images[0])
 
   return (
     <div
