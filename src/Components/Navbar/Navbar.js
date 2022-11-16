@@ -10,33 +10,28 @@ import "./navbar.css";
 import { navbarData } from "./navbarData";
 
 const Navbar = (props) => {
-
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const url = 'http://127.0.0.1:8000/api/categories/all';
+    const url = "http://127.0.0.1:8000/api/categories/all";
     const options = {
-        method: 'GET',
-        headers: new Headers(),
+      method: "GET",
+      headers: new Headers(),
     };
 
     fetch(url, options)
-        .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                }
-                return Promise.reject(response.status);
-            }
-        )
-        .then(payload => {
-          setCategories(payload);
-          console.log(categories)
-            }
-        )
-        .catch(error => console.log(error));
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+        return Promise.reject(response.status);
+      })
+      .then((payload) => {
+        setCategories(payload);
+        console.log(categories);
+      })
+      .catch((error) => console.log(error));
   }, []);
-
-  
 
   return (
     <div className="flex w-full fixed flex-col bg-white	">
@@ -57,14 +52,16 @@ const Navbar = (props) => {
         <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
             {categories.map((item) => (
-              <div className="dropdown ">
-                  <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
-                    {item.name}
-                  </span>
+              <div className="dropdown hover:text-primary">
+                <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
+                  {item.name}
+                </span>
                 {item.subcategories && (
                   <div className="dropdown-content text-sm">
                     {item.subcategories.map((subitem) => (
-                        <span className="uppercase navLink hover:text-primary block">{subitem.name}</span>
+                      <span className="uppercase navLink hover:text-primary block">
+                        {subitem.name}
+                      </span>
                     ))}
                   </div>
                 )}
