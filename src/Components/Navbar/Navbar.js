@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import logo from "../../assets/logonegro.png";
-import logo2 from "../../assets/logonegrofull.png";
+import logo from "../../assets/logonegro.svg";
 import bag from "../../assets/bag.svg";
 import { FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
 import { navLinkStyle, navLinkStyleHover } from "../../astyles/navbarStyles";
@@ -33,6 +32,10 @@ const Navbar = (props) => {
       .catch((error) => console.log(error));
   }, []);
 
+  useEffect(() => {
+    console.log(categories);
+  }, [categories]);
+
   return (
     <div className="flex w-full fixed flex-col bg-white	">
       <div
@@ -52,19 +55,20 @@ const Navbar = (props) => {
         <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
             {categories.map((item) => (
-              <div className="dropdown hover:text-primary">
+              <div className="dropdown text-[#1A171B] hover:text-primary">
                 <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
                   {item.name}
                 </span>
-                {item.subcategories && (
-                  <div className="dropdown-content text-sm">
+                {item.subcategories.length > 0 && (
+                  
+                  <div className="dropdown-content text-[#1A171B] text-sm">
                     {item.subcategories.map((subitem) => (
-                      <span className="uppercase navLink hover:text-primary block">
+                      <span className="uppercase cursor-pointer navLink hover:text-primary block">
                         {subitem.name}
                       </span>
                     ))}
                   </div>
-                )}
+                ) }
               </div>
             ))}
           </div>
