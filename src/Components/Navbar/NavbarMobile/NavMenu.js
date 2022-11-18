@@ -2,7 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavbarWrapper } from './styles'  
 
-const NavMenu = ({open, categories}) => {
+const NavMenu = ({ open }) => {
+  
+  const categories = [
+    {
+      id: 1,
+      name: "ropa"
+    },
+    {
+      id: 2,
+      name: "colecciones"
+    },{
+      id: 3,
+      name: "rebajas"
+    },{
+      id: 4,
+      name: "accesorios"
+    },
+  ]
   return (
     <NavbarWrapper open={open}>
      <div className="flex w-3/6 flex-col   mt-12">
