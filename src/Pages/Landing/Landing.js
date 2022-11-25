@@ -19,7 +19,7 @@ import CartPage from "../CartPage/CartPage";
 const Landing = (props) => {
   return (
     <Router>
-      <div className="flex flex-col flex-1 w-100	">
+      <div className="flex flex-col flex-1 w-100">
         <Navbar />
         <Routes>
           <Route exact path="/" element={<ProductsView />} />

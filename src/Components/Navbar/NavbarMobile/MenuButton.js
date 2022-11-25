@@ -1,18 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { BsList, BsX } from "react-icons/bs";
+import { BsList, BsX, BsArrowLeft } from "react-icons/bs";
 import { MenuButtonWrapper } from "./styles";
 
-const MenuButton = ({ open, handleClick }) => {
+const MenuButton = ({ open, handleClick, subMenuOpen, setSubMenuOpen }) => {
   return !open ? (
     <MenuButtonWrapper onClick={handleClick}>
-      <BsList size={60} />
+      <BsList size={40} />
     </MenuButtonWrapper>
   ) : (
-    <MenuButtonWrapper onClick={handleClick}>
-      <BsX size={60} />
-    </MenuButtonWrapper>
+    
+        !subMenuOpen ? (
+          <MenuButtonWrapper onClick={handleClick}>
+          <BsX size={45} />
+          </MenuButtonWrapper >
+          )
+          :
+          <MenuButtonWrapper onClick={()=>setSubMenuOpen(false) }>
+          <BsArrowLeft size={40} />
+          </MenuButtonWrapper >
+        
   );
 };
 
