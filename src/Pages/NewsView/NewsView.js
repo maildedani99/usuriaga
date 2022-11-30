@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import ProductCard from '../../Components/ProductCard';
+import useResponsive from '../../Hooks/useResponsive';
 
 const NewsView = props => {
 
-    const [products, setProducts] = useState([])
+  const { isDesktop, isMobile} = useResponsive()
+  const [products, setProducts] = useState([])
 
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const NewsView = props => {
   }, []);
 
   return (
-    <div className="flex flex-wrap	  p-10 mt-32">
+    <div className={isDesktop ? 'flex flex-wrap p-10 mt-32 ' :  'flex flex-wrap p-10  ' }>
        {products && products.map((product) => (
       <ProductCard product={product} key={product.id} />
     ))}

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { navbarData } from "./navbarData";
 import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile/NavbarMobile";
 import useResponsive from "../../Hooks/useResponsive";
 
-const Navbar = (props) => {
+const Navbar = () => {
   const [categories, setCategories] = useState([]);
   const { isDesktop, isMobile} = useResponsive()
 
@@ -41,7 +40,6 @@ const Navbar = (props) => {
     </div>
     )
 };
-/* bg-neutral-100	 */
 
 Navbar.propTypes = {};
 

@@ -5,31 +5,42 @@ import NavMenu from "./NavMenu";
 import MenuButton from "./MenuButton";
 import logo from "../../../assets/logonegro.svg";
 import NavSubMenu from "./NavSubMenu";
+import { useNavigate } from "react-router-dom";
 
 const NavbarMobile = ({ categories }) => {
+  const navigate = useNavigate();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
-  const [subCategories, setSubCategories] = useState(["dani","paco"])
+  const [subCategories, setSubCategories] = useState(["dani", "paco"]);
 
-  const handleClick = () => {
+  const switchMenuOpen = () => {
     setMenuOpen(!menuOpen);
   };
   const onSubMenuOpen = (e) => {
-    setSubCategories(categories.find(item => item.id == e.target.id ).subcategories);
-    setSubMenuOpen(true)
-    console.log(e.target.id)
-  }
-  
+    setSubCategories(
+      categories.find((item) => item.id == e.target.id).subcategories
+    );
+    setSubMenuOpen(true);
+    console.log(e.target.id);
+  };
+  const subcategoryHandleClick = (id) => {
+    navigate(`/productsView/${id}`);
+    console.log(`/productsView/${id}`);
+  };
+  const NewsHandleClick = () => {
+    navigate("/newsView");
+  };
+
   useEffect(() => {
-        console.log(subCategories)
+    console.log(subCategories);
   }, [subCategories]);
-  
 
   return (
     <div>
-      <HeaderWrapper className=" px-4">
+      <HeaderWrapper className=" px-4 border-b">
         <div className=" p-6 w-8/12	my-auto ">
-          <img className="mx-auto my-auto " src={logo} alt="Usuriaga" width="100%" />
+          <img className=" my-auto " src={logo} alt="Usuriaga" width="250px" />
         </div>
         <NavMenu
           open={menuOpen}
@@ -37,19 +48,28 @@ const NavbarMobile = ({ categories }) => {
           subMenuOpen={subMenuOpen}
           setSubMenuOpen={setSubMenuOpen}
           onSubMenuOpen={onSubMenuOpen}
+          NewsHandleClick={NewsHandleClick}
+          switchMenuOpen={switchMenuOpen}
         />
-        <div className="mb-4 my-auto ">
+        <div className=" my-auto ">
+            
           <MenuButton
             className="ml-2  my-auto "
             open={menuOpen}
             subMenuOpen={subMenuOpen}
             setSubMenuOpen={setSubMenuOpen}
-            handleClick={handleClick}
-          />
+            switchMenuOpen={switchMenuOpen}
+            />
         </div>
-      </HeaderWrapper>
-      <HeaderWrapper className=" px-4">
-        <NavSubMenu subCategories={subCategories} open={onSubMenuOpen} setSubMenuOpen={setSubMenuOpen} subMenuOpen={subMenuOpen} subCategories={subCategories} />
+        <NavSubMenu
+          subCategories={subCategories}
+          open={onSubMenuOpen}
+          setSubMenuOpen={setSubMenuOpen}
+          subMenuOpen={subMenuOpen}
+          handleClick={switchMenuOpen}
+          subcategoryHandleClick={subcategoryHandleClick}
+          switchMenuOpen={switchMenuOpen}
+        />
       </HeaderWrapper>
     </div>
   );

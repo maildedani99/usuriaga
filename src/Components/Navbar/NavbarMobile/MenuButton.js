@@ -4,15 +4,15 @@ import styled from "styled-components";
 import { BsList, BsX, BsArrowLeft } from "react-icons/bs";
 import { MenuButtonWrapper } from "./styles";
 
-const MenuButton = ({ open, handleClick, subMenuOpen, setSubMenuOpen }) => {
+const MenuButton = ({ open, switchMenuOpen, subMenuOpen, setSubMenuOpen }) => {
   return !open ? (
-    <MenuButtonWrapper onClick={handleClick}>
+    <MenuButtonWrapper onClick={switchMenuOpen}>
       <BsList size={40} />
     </MenuButtonWrapper>
   ) : (
     
         !subMenuOpen ? (
-          <MenuButtonWrapper onClick={handleClick}>
+          <MenuButtonWrapper onClick={switchMenuOpen}>
           <BsX size={45} />
           </MenuButtonWrapper >
           )
