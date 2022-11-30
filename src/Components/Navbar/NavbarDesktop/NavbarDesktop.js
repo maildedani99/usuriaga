@@ -8,9 +8,13 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 const NavbarDesktop = ({ categories }) => {
   const navigate = useNavigate();
 
-  function subcategoryHandleClick(id) {
+  const subcategoryHandleClick = (id) => {
     navigate(`/productsView/${id}`);
     console.log(`/productsView/${id}`)
+  }
+
+  const NewsHandleClick = () => {
+    navigate('/newsView');
   }
 
   return (
@@ -31,6 +35,11 @@ const NavbarDesktop = ({ categories }) => {
         </div>
         <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
+          <div  className="dropdown text-[#1A171B] hover:text-primary" onClick={NewsHandleClick}>
+                <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
+                  Novedades
+              </span>
+              </div>
             {categories.map((item) => (
               <div key={item.id} className="dropdown text-[#1A171B] hover:text-primary">
                 <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">

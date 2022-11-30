@@ -1,21 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { data } from '../../DevAssets/data/data'
-import ProductCard from '../../Components/ProductCard'
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import ProductCard from '../../Components/ProductCard';
 
-const ProductsView = () => {
+const NewsView = props => {
 
-  
-  const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([])
 
-  const { id } = useParams()
-   console.log(id)
-  //const [subCategoryId, setSubCategoryId] = useState()
 
   useEffect(() => {
-    const url = 'http://127.0.0.1:8000/api/products/getBySubCategory/' + id;
+    const url = 'http://127.0.0.1:8000/api/products/novelties/all';
     const options = {
         method: 'GET',
         headers: new Headers(),
@@ -34,8 +27,7 @@ const ProductsView = () => {
             }
         )
         .catch(error => console.log(error));
-  }, [id]);
-
+  }, []);
 
   return (
     <div className="flex flex-wrap	  p-10 mt-32">
@@ -46,6 +38,6 @@ const ProductsView = () => {
   )
 }
 
-ProductsView.propTypes = {}
+NewsView.propTypes = {}
 
-export default ProductsView
+export default NewsView

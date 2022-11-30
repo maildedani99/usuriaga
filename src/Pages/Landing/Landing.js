@@ -15,6 +15,7 @@ import ProductsView from "../ProductsView/ProductsView";
 import ProductView from "../ProductView/ProductView";
 import ProductInfo from "../../Components/ProductInfo/ProductInfo";
 import CartPage from "../CartPage/CartPage";
+import NewsView from "../NewsView/NewsView";
 
 const Landing = (props) => {
   return (
@@ -22,10 +23,10 @@ const Landing = (props) => {
       <div className="flex flex-col flex-1 w-100">
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<ProductsView />} />
+          <Route exact path="/" element={<NewsView />} />
           <Route exact path="/productInfo" element={<ProductInfo />} />
           <Route exact path="/cartPage" element={<CartPage />} />
-          <Route exact path="/newsPage" element={<NewsPage />} />
+          <Route exact path="/newsView" element={<NewsView />} />
           <Route exact path="/loginPage" element={<LoginPage />} />
           <Route exact path="/registerPage" element={<RegisterPage />} />
           <Route exact path="/productsView/:id" element={<ProductsView />} />
