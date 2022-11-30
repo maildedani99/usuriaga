@@ -1,11 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 import logo from "../../../assets/logonegro.svg";
 import "../navbar.css";
 import { FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-const NavbarDesktop = ({categories}) => {
+const NavbarDesktop = ({ categories }) => {
+  const navigate = useNavigate();
+
+  function subcategoryHandleClick(id) {
+    navigate(`/productsView/${id}`);
+    console.log(`/productsView/${id}`)
+  }
+
   return (
     <div className="flex w-full fixed flex-col bg-white	">
       <div
@@ -25,20 +32,19 @@ const NavbarDesktop = ({categories}) => {
         <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
             {categories.map((item) => (
-              <div className="dropdown text-[#1A171B] hover:text-primary">
+              <div key={item.id} className="dropdown text-[#1A171B] hover:text-primary">
                 <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
                   {item.name}
                 </span>
                 {item.subcategories.length > 0 && (
-                  
                   <div className="dropdown-content text-[#1A171B] text-sm">
                     {item.subcategories.map((subitem) => (
-                      <span className="uppercase cursor-pointer navLink hover:text-primary block">
-                        {subitem.name}
-                      </span>
+                        <span key={subitem.id} id={subitem.id} onClick={(e)=>subcategoryHandleClick(e.target.id)} className="uppercase cursor-pointer navLink hover:text-primary block">
+                          {subitem.name}
+                        </span>
                     ))}
                   </div>
-                ) }
+                )}
               </div>
             ))}
           </div>
@@ -63,9 +69,9 @@ const NavbarDesktop = ({categories}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-NavbarDesktop.propTypes = {}
+NavbarDesktop.propTypes = {};
 
-export default NavbarDesktop
+export default NavbarDesktop;

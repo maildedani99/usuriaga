@@ -3,15 +3,19 @@ import PropTypes from 'prop-types'
 import { data } from '../../DevAssets/data/data'
 import ProductCard from '../../Components/ProductCard'
 import { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-const ProductsView = props => {
+const ProductsView = () => {
 
   
   const [products, setProducts] = useState([])
-  
+
+  const { id } = useParams()
+   console.log(id)
+  //const [subCategoryId, setSubCategoryId] = useState()
 
   useEffect(() => {
-    const url = 'http://127.0.0.1:8000/api/products/all';
+    const url = 'http://127.0.0.1:8000/api/products/getBySubCategory/' + id;
     const options = {
         method: 'GET',
         headers: new Headers(),
@@ -30,7 +34,11 @@ const ProductsView = props => {
             }
         )
         .catch(error => console.log(error));
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    console.log(products)
+  }, [products]);
 //console.log(products)
   return (
     <div className="flex flex-wrap	  p-10 mt-32">

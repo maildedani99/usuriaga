@@ -28,7 +28,7 @@ const Landing = (props) => {
           <Route exact path="/newsPage" element={<NewsPage />} />
           <Route exact path="/loginPage" element={<LoginPage />} />
           <Route exact path="/registerPage" element={<RegisterPage />} />
-          <Route exact path="/productView" element={<ProductView />} />
+          <Route exact path="/productsView/:id" element={<ProductsView />} />
         </Routes>
       </div>
     </Router>
