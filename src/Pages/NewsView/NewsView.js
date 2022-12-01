@@ -32,7 +32,10 @@ const NewsView = props => {
   }, []);
 
   return (
-    <div className={isDesktop ? 'flex flex-wrap p-10 mt-32 ' :  'flex flex-wrap p-10  ' }>
+    <div className={isDesktop ? 'flex flex-wrap p-10 mt-32 ' : 'flex flex-wrap p-10  '}>
+      <div className='flex text-5xl justify-center w-full text-[#282828] text-center'>
+        <span className=''>Novedades</span>
+        </div>
        {products && products.map((product) => (
       <ProductCard product={product} key={product.id} />
     ))}

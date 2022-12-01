@@ -9,7 +9,6 @@ const NavMenu = ({
   switchMenuOpen,
   NewsHandleClick,
 }) => {
-
   const onClickNovelties = () => {
     NewsHandleClick();
     switchMenuOpen();
@@ -17,9 +16,9 @@ const NavMenu = ({
 
   return (
     <NavbarWrapper open={open}>
-      <div className="flex w-3/6 flex-col   mt-12 bg-white h-screen	w-screen	">
+      <div className="flex w-3/6 flex-col   mt-8 bg-white h-screen	w-screen	">
         <div
-          className="text-6xl  mt-16	 text-[#1A171B] mx-6 uppercase cursor-pointer"
+          className="text-6xl  mt-16	 text-[#282828] mx-6 capitalize cursor-pointer"
           onClick={onClickNovelties}
         >
           <span>Novedades</span>
@@ -28,8 +27,9 @@ const NavMenu = ({
           (category) =>
             category.subcategories.length > 0 && (
               <div
+                key={category.id}
                 id={category.id}
-                className="text-6xl  mt-16	 text-[#1A171B] mx-6 uppercase cursor-pointer"
+                className="text-6xl  mt-16	 text-[#282828] capitalize mx-6  cursor-pointer"
                 onClick={(e) => onSubMenuOpen(e)}
               >
                 {category.name}

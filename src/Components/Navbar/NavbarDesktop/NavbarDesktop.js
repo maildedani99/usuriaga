@@ -33,7 +33,7 @@ const NavbarDesktop = ({ categories }) => {
         <div className="flex w-6/12 justify-center ">
           <div className=" self-center">
             <div
-              className="dropdown text-[#1A171B] hover:text-primary"
+              className="dropdown text-[#282828] hover:text-primary"
               onClick={NewsHandleClick}
             >
               <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
@@ -43,7 +43,7 @@ const NavbarDesktop = ({ categories }) => {
             {categories.map((category) => (
               <div
                 key={category.id}
-                className="dropdown text-[#1A171B] hover:text-primary"
+                className="dropdown text-[#282828] hover:text-primary"
               >
                 {category.subcategories.length > 0 && (
                   <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">

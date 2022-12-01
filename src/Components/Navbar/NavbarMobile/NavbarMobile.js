@@ -12,7 +12,7 @@ const NavbarMobile = ({ categories }) => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [subMenuOpen, setSubMenuOpen] = useState(false);
-  const [subCategories, setSubCategories] = useState(["dani", "paco"]);
+  const [subCategories, setSubCategories] = useState([]);
 
   const switchMenuOpen = () => {
     setMenuOpen(!menuOpen);
@@ -22,18 +22,15 @@ const NavbarMobile = ({ categories }) => {
       categories.find((item) => item.id == e.target.id).subcategories
     );
     setSubMenuOpen(true);
-    console.log(e.target.id);
   };
   const subcategoryHandleClick = (id) => {
     navigate(`/productsView/${id}`);
-    console.log(`/productsView/${id}`);
   };
   const NewsHandleClick = () => {
     navigate("/newsView");
   };
 
   useEffect(() => {
-    console.log(subCategories);
   }, [subCategories]);
 
   return (
@@ -52,14 +49,13 @@ const NavbarMobile = ({ categories }) => {
           switchMenuOpen={switchMenuOpen}
         />
         <div className=" my-auto ">
-            
           <MenuButton
             className="ml-2  my-auto "
             open={menuOpen}
             subMenuOpen={subMenuOpen}
             setSubMenuOpen={setSubMenuOpen}
             switchMenuOpen={switchMenuOpen}
-            />
+          />
         </div>
         <NavSubMenu
           subCategories={subCategories}

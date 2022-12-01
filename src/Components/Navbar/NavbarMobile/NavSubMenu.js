@@ -9,7 +9,7 @@ const NavSubMenu = ({
   subcategoryHandleClick,
   switchMenuOpen
 }) => {
-  
+
   const onClickSubCategory = (id) => {
     subcategoryHandleClick(id)
     setSubMenuOpen(false)
@@ -18,12 +18,13 @@ const NavSubMenu = ({
 
   return (
     <NavbarWrapper open={subMenuOpen}>
-      <div className="flex w-3/6 flex-col   mt-12 bg-white h-screen	w-screen	">
+      <div className="flex w-3/6 flex-col text-[#282828] capitalize  mt-8 bg-white h-screen	w-screen	">
         {subCategories &&
           subCategories.map((subCategory) => (
             <div
+              key={subCategory.id}
               id={subCategory.id}
-              className="text-6xl  mt-16	 text-[#1A171B] mx-6 uppercase cursor-pointer"
+              className="text-6xl mt-16 mx-6 capitalize cursor-pointer"
               onClick={(e) => onClickSubCategory(e.target.id)}
             >
               {subCategory.name}

@@ -24,14 +24,11 @@ const Navbar = () => {
       })
       .then((payload) => {
         setCategories(payload);
-        console.log(categories);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  useEffect(() => {
-    console.log(categories);
-  }, [categories]);
+
 
   return (
     <div>
