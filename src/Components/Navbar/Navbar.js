@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile/NavbarMobile";
 import useResponsive from "../../Hooks/useResponsive";
+import { CONECTION_API } from "../../routes/routes";
 
 const Navbar = () => {
   const [categories, setCategories] = useState([]);
   const { isDesktop, isMobile} = useResponsive()
 
   useEffect(() => {
-    const url = "http://127.0.0.1:8000/api/categories/all";
+    const url = CONECTION_API + "categories/all";
     const options = {
       method: "GET",
       headers: new Headers(),
