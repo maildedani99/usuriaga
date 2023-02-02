@@ -9,7 +9,10 @@ const ProductCard = ({ product }) => {
   const { isDesktop, isMobile} = useResponsive()
 
   const handleClick = () => {
-    navigate("/productInfo", { state: product });
+    navigate("/productInfo", {
+      state: {
+        product:product
+    }  });
   };
 
   return (
