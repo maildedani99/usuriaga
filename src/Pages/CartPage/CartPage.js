@@ -8,7 +8,7 @@ const CartPage = (props) => {
   return (
     <div className="flex flex-1 flex-col  mt-10 justify-center">
       <div className="flex flex-col">
-        <div className="flex flex-1  text-5xl justify-center  ">
+        <div className="flex flex-1  text-5xl justify-center tracking-wider capitalize font-light		text-[#515151] ">
           <span className="	">Carrito</span>
         </div>
         <div className="flex flex-1 mt-20 px-16">

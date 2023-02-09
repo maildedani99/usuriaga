@@ -9,7 +9,7 @@ const RegisterPage = (props) => {
       <div className="flex flex-col w-4/12 border	justify-center p-8">
         <span className=" text-4xl mt-8 mx-auto">Registrarse</span>
         <input
-          className="border w-5/6 mx-auto p-4 mt-16 border-2"
+          className=" w-5/6 mx-auto p-4 mt-16 border-2"
           type="text"
           name="usuario"
           placeholder="Nombre de usuario o correo electrónico *"

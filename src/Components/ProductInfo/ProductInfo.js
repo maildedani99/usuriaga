@@ -66,8 +66,9 @@ console.log(product)
             </div>
             <div className="flex w-5/6 p-8 mx-auto">
               <input
-                className=" flex flex-1 p-4 text-xl text-white   text-center mb-8 capitalize "
+                className=" flex flex-1 p-4 text-xl text-white  cursor-pointer text-center mb-8 capitalize "
                 defaultValue="Comprar"
+                disabled
                 style={{ backgroundColor: "#dac895" }}
               />
             </div>
