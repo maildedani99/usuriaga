@@ -17,12 +17,12 @@ const NavbarDesktop = ({ categories }) => {
   };
 
   return (
-    <div className="flex w-full fixed flex-col bg-white	">
+    <div className="flex w-full fixed flex-col bg-white				">
       <div
         className="flex  flex-1 border-b 	"
         style={{ backgroundColor: "#dac895" }}
       >
-        <div className="flex flex-1 w-3/5 justify-center text-white p-1 font-light 	">
+        <div className="flex flex-1 w-3/5 justify-center text-white p-1 font-light	 tracking-wider 	">
           <span>ENVÍOS GRATIS para compras superiores a 40€</span>
         </div>
       </div>
@@ -30,34 +30,34 @@ const NavbarDesktop = ({ categories }) => {
         <div className=" p-6 w-3/12	my-auto ">
           <img className="mx-auto" src={logo} alt="Usuriaga" width="250" />
         </div>
-        <div className="flex w-6/12 justify-center ">
+        <div className="flex w-6/12 justify-center capitalize tracking-wider text-lg			 ">
           <div className=" self-center">
             <div
-              className="dropdown text-[#282828] hover:text-primary"
+              className="dropdown text-[#636364] hover:text-primary"
               onClick={NewsHandleClick}
             >
-              <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
+              <span className=" mx-6   cursor-pointer navLink hover:text-primary ">
                 Novedades
               </span>
             </div>
             {categories.map((category) => (
               <div
                 key={category.id}
-                className="dropdown text-[#282828] hover:text-primary"
+                className="dropdown text-[#636364] hover:text-primary"
               >
                 {category.subcategories.length > 0 && (
-                  <span className=" mx-6 uppercase   cursor-pointer navLink hover:text-primary ">
+                  <span className=" mx-6  cursor-pointer navLink hover:text-primary ">
                     {category.name}
                   </span>
                 )}
                 {category.subcategories.length > 0 && (
-                  <div className="dropdown-content text-[#1A171B] text-sm">
+                  <div className="dropdown-content text-[#636364] text-sm">
                     {category.subcategories.map((subcategory) => (
                       <span
                         key={subcategory.id}
                         id={subcategory.id}
                         onClick={(e) => subcategoryHandleClick(e.target.id)}
-                        className="uppercase cursor-pointer navLink hover:text-primary block"
+                        className=" cursor-pointer navLink hover:text-primary block"
                       >
                         {subcategory.name}
                       </span>

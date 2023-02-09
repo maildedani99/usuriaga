@@ -32,7 +32,7 @@ const Navbar = () => {
 
 
   return (
-    <div>
+    <div className="z-40">
       {isDesktop && <NavbarDesktop categories={categories} /> }
         {isMobile && <NavbarMobile categories={categories} />}
     </div>

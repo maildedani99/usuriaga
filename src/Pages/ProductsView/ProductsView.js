@@ -21,8 +21,8 @@ const ProductsView = () => {
 
 
   return (
-    <div className={isDesktop ? 'flex flex-wrap p-10 mt-32 ' : 'flex flex-wrap p-10  '}>
-      <div className='flex text-5xl justify-center w-full text-[#282828] text-center'>
+    <div className={isDesktop ? 'flex flex-wrap p-10' : 'flex flex-wrap p-10'}>
+      <div className='flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center'>
         <span className=''>{SubCategoryName.name}</span>
         </div>
        {products && products.map((product) => (

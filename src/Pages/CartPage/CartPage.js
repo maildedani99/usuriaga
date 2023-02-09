@@ -6,7 +6,7 @@ import SummaryCart from "../../Components/SummaryCart/SummaryCart";
 
 const CartPage = (props) => {
   return (
-    <div className="flex flex-1 flex-col  mt-48 justify-center">
+    <div className="flex flex-1 flex-col  mt-10 justify-center">
       <div className="flex flex-col">
         <div className="flex flex-1  text-5xl justify-center  ">
           <span className="	">Carrito</span>

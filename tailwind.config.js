@@ -8,6 +8,13 @@ module.exports = {
         'secondary': "#636364",
       
       },
+      fontFamily: {
+        'Jost': ['ui-sans-serif', 'system-ui'],
+        'serif': ['ui-serif', 'Georgia'],
+        'mono': ['ui-monospace', 'SFMono-Regular'],
+        'display': ['Oswald'],
+        'body': ['Poppins'],
+      }
     },
   },
   plugins: [],

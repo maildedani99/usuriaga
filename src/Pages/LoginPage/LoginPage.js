@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const LoginPage = (props) => {
   return (
-    <div className="flex flex-1 mt-48 justify-center">
+    <div className="flex flex-1 mt-16 justify-center">
       <div className="flex flex-col w-4/12 border	justify-center p-8">
         <span className=" text-4xl mt-8 mx-auto">Iniciar Sesion</span>
         <input

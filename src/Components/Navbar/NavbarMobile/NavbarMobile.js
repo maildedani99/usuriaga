@@ -35,7 +35,7 @@ const NavbarMobile = ({ categories }) => {
 
   return (
     <div>
-      <HeaderWrapper className=" px-4 border-b">
+      <HeaderWrapper className="flex flex-1 w-100 px-4 border-b fixed bg-white">
         <div className=" p-6 w-8/12	my-auto ">
           <img className=" my-auto " src={logo} alt="Usuriaga" width="250px" />
         </div>

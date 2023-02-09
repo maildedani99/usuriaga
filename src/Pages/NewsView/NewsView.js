@@ -30,15 +30,15 @@ const NewsView = (props) => {
 
   return (
     <>
-      <div className="flex mt-32">
-        <img src={header} alt="" />
-      </div>
+        {/* <div className="flex mt-32">
+          <img src={header} alt="" />
+        </div> */}
       <div
         className={
-          isDesktop ? "flex flex-wrap p-10 mt-32 " : "flex flex-wrap p-10  "
+          isDesktop ? "flex flex-wrap p-10  " : "flex flex-wrap p-10  "
         }
       >
-        <div className="flex text-5xl justify-center w-full text-[#282828] text-center">
+        <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
           <span className="">Novedades</span>
         </div>
         {products &&
