@@ -4,17 +4,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': "#dac895",
-        'secondary': "#636364",
-      
+        primary: "#dac895",
+        secondary: "#636364",
       },
       fontFamily: {
-        'Jost': ['ui-sans-serif', 'system-ui'],
-        'serif': ['ui-serif', 'Georgia'],
-        'mono': ['ui-monospace', 'SFMono-Regular'],
-        'display': ['Oswald'],
-        'body': ['Poppins'],
-      }
+        Jost: ["ui-sans-serif", "system-ui"],
+        serif: ["ui-serif", "Georgia"],
+        mono: ["ui-monospace", "SFMono-Regular"],
+        navbar: ["Roboto"],
+        body: ["Poppins"],
+      },
     },
   },
   plugins: [],

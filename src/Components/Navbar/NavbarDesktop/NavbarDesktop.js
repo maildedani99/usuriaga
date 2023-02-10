@@ -30,7 +30,7 @@ const NavbarDesktop = ({ categories }) => {
         <div className=" p-6 w-3/12	my-auto ">
           <img className="mx-auto" src={logo} alt="Usuriaga" width="250" />
         </div>
-        <div  className="flex w-6/12 justify-center capitalize tracking-wider text-lg	font-[400]		 ">
+        <div  className="flex w-6/12 justify-center capitalize tracking-widest text-base font-roboto	font-[400]		 ">
           <div className=" self-center">
             <div
               className="dropdown text-[#636364] hover:text-primary"
@@ -73,15 +73,15 @@ const NavbarDesktop = ({ categories }) => {
             className="flex w-4/6 justify-between	"
             onMouseEnter={() => console.log("hover ")}
           >
-            <FiSearch size={28} color="#636364"  />
+            <FiSearch size={25} color="#636364"  />
             <NavLink className="navLink" to="/loginPage">
               <span className="cursor-pointer">
-                <FiUser size={28} color="#636364" />
+                <FiUser size={25} color="#636364" />
               </span>
             </NavLink>
             <NavLink className="navLink" to="/cartPage">
               <span className="cursor-pointer">
-                <FiShoppingCart size={28} color="#636364" />
+                <FiShoppingCart size={25} color="#636364" />
               </span>
             </NavLink>
           </div>
