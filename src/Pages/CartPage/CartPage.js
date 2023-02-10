@@ -24,6 +24,8 @@ const CartPage = (props) => {
   );
 };
 
-CartPage.propTypes = {};
+CartPage.propTypes = {
+  props: PropTypes.any
+};
 
 export default CartPage;

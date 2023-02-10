@@ -1,37 +1,40 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import ProductCard from '../../Components/ProductCard'
-import { useEffect } from 'react'
+import React from "react";
+import PropTypes from "prop-types";
+import ProductCard from "../../Components/ProductCard";
+import { useEffect } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
-import { useParams } from 'react-router-dom'
-import useResponsive from '../../Hooks/useResponsive'
-import useProducts from '../../Hooks/useProducts'
+import { useParams } from "react-router-dom";
+import useResponsive from "../../Hooks/useResponsive";
+import useProducts from "../../Hooks/useProducts";
 
-const ProductsView = () => {
-
-  const { id } = useParams()
-  const { isDesktop } = useResponsive()
-  const { products, getProductsBySubcategory, SubCategoryName, getSubcategoryName } = useProducts()
- 
-
-  useEffect(() => {
-    id && getProductsBySubcategory(id)
-    id && getSubcategoryName(id)
-  }, [id]);
+const ProductsView = (props) => {
+  const { id } = useParams();
+  const { isDesktop } = useResponsive();
+  const {
+    products,
+    getProductsBySubcategory,
+    SubCategoryName,
+    getSubcategoryName,
+  } = useProducts();
   
-
+  useEffect(() => {
+    id && getProductsBySubcategory(id);
+    id && getSubcategoryName(id);
+    // eslint-disable-next-line
+  }, [id]);
 
   return (
-    <div className={isDesktop ? 'flex flex-wrap p-10' : 'flex flex-wrap p-10'}>
-      <div className='flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center'>
-        <span className=''>{SubCategoryName.name}</span>
-        </div>
-      {products ?
-        products && products.map((product) => (
+    <div className={isDesktop ? "flex flex-wrap p-10" : "flex flex-wrap p-10"}>
+      <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
+        <span className="">{SubCategoryName.name}</span>
+      </div>
+      {products ? (
+        products &&
+        products.map((product) => (
           <ProductCard product={product} key={product.id} />
-          ))
-          :
-          <div className="flex flex-1">
+        ))
+      ) : (
+        <div className="flex flex-1">
           <div className="mx-auto mt-48">
             <BeatLoader
               color="#dac895"
@@ -41,11 +44,18 @@ const ProductsView = () => {
             />
           </div>
         </div>
-  }
-  </div>
-  )
-}
+      )}
+    </div>
+  );
+};
 
-ProductsView.propTypes = {}
+ProductsView.propTypes = {
+  products: PropTypes.object,
+  getProductsBySubcategory: PropTypes.func,
+  SubCategoryName: PropTypes.object,
+  getSubcategoryName: PropTypes.func,
+  isDesktop: PropTypes.bool,
+  id: PropTypes.string
+};
 
-export default ProductsView
+export default ProductsView;

@@ -17,20 +17,20 @@ const NavbarDesktop = ({ categories }) => {
   };
 
   return (
-    <div className="flex w-full fixed flex-col bg-white				">
+    <div className="flex w-full fixed flex-col bg-white	">
       <div
         className="flex  flex-1 border-b 	"
         style={{ backgroundColor: "#dac895" }}
       >
-        <div className="flex flex-1 w-3/5 justify-center text-white p-1 font-light	 tracking-wider 	">
-          <span>ENVÍOS GRATIS para compras superiores a 40€</span>
+        <div className="flex flex-1 w-3/5 justify-center text-white p-1 	 tracking-wider">
+          <span>ENVÍOS GRATIS para compras superiores a 60€</span>
         </div>
       </div>
       <div className="flex flex-row flex-1 border-b ">
         <div className=" p-6 w-3/12	my-auto ">
           <img className="mx-auto" src={logo} alt="Usuriaga" width="250" />
         </div>
-        <div className="flex w-6/12 justify-center capitalize tracking-wider text-lg			 ">
+        <div  className="flex w-6/12 justify-center capitalize tracking-wider text-lg	font-[400]		 ">
           <div className=" self-center">
             <div
               className="dropdown text-[#636364] hover:text-primary"
@@ -73,7 +73,7 @@ const NavbarDesktop = ({ categories }) => {
             className="flex w-4/6 justify-between	"
             onMouseEnter={() => console.log("hover ")}
           >
-            <FiSearch size={28} color="#636364" />
+            <FiSearch size={28} color="#636364"  />
             <NavLink className="navLink" to="/loginPage">
               <span className="cursor-pointer">
                 <FiUser size={28} color="#636364" />

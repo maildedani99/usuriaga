@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import useResponsive from "../../Hooks/useResponsive";
-import ClipLoader from "react-spinners/ClipLoader";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  const { isDesktop, isMobile } = useResponsive();
+  const { isDesktop } = useResponsive();
 
   const handleClick = () => {
     navigate("/productInfo", {
@@ -28,17 +27,14 @@ const ProductCard = ({ product }) => {
       <img src={product.images[0].url && product.images[0].url} alt="foto" />
       <span className=" text-base	 mx-auto mt-2">{product.name}</span>
       <span className=" text-base	 mx-auto mt-2 ">{product.price} €</span>
-
-      {/* <input
-        type="button"
-        value="Añadir al carrito "
-        style={{ backgroundColor: "#dac895", color: "white" }}
-        className="w-2/6 p-2 mt-2 self-center	cursor-pointer"
-      /> */}
     </div>
   );
 };
 
-ProductCard.propTypes = {};
+ProductCard.propTypes = {
+  isDesktop: PropTypes.bool,
+  isMobile: PropTypes.bool,
+  navigate: PropTypes.func,
+};
 
 export default ProductCard;

@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import ProductCard from "../../Components/ProductCard";
 import useResponsive from "../../Hooks/useResponsive";
-import header from "../../assets/top-ventas.jpg";
 import BeatLoader from "react-spinners/BeatLoader";
 
-const NewsView = (props) => {
-  const { isDesktop, isMobile } = useResponsive();
+const NewsView = () => {
+  const { isDesktop } = useResponsive();
   const [products, setProducts] = useState();
 
   useEffect(() => {
@@ -31,7 +30,7 @@ const NewsView = (props) => {
 
   return (
     <div
-      className={isDesktop ? "flex flex-wrap p-10  " : "flex flex-wrap p-10  "}
+      className={isDesktop ? "flex flex-wrap p-10  " : "flex flex-wrap p-10 mt-10 "}
     >
       <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
         <span className="">Novedades</span>
@@ -56,6 +55,10 @@ const NewsView = (props) => {
   );
 };
 
-NewsView.propTypes = {};
+NewsView.propTypes = {
+  isDesktop: PropTypes.bool,
+  products: PropTypes.object,
+  setProducts: PropTypes.func
+};
 
 export default NewsView;
