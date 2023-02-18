@@ -22,18 +22,18 @@ const NavbarDesktop = ({ categories }) => {
         className="flex  flex-1 border-b 	"
         style={{ backgroundColor: "#dac895" }}
       >
-        <div className="flex flex-1 w-3/5 justify-center text-white p-1 	 tracking-wider">
-          <span>ENVÍOS GRATIS para compras superiores a 60€</span>
+        <div className="flex flex-1 w-3/5 justify-center text-white p-1 	 tracking-widest ">
+          <span className="text-white">ENVÍOS GRATIS para compras superiores a 60€</span>
         </div>
       </div>
-      <div className="flex flex-row flex-1 border-b ">
+      <div className="flex flex-row flex-1 border-b">
         <div className=" p-6 w-3/12	my-auto ">
           <img className="mx-auto" src={logo} alt="Usuriaga" width="250" />
         </div>
-        <div  className="flex w-6/12 justify-center capitalize tracking-widest text-base font-roboto	font-[400]		 ">
+        <div className="flex w-6/12 justify-center capitalize tracking-wide text-lg font-[400]		 ">
           <div className=" self-center">
             <div
-              className="dropdown text-[#636364] hover:text-primary"
+              className="dropdown  hover:text-primary"
               onClick={NewsHandleClick}
             >
               <span className=" mx-6   cursor-pointer navLink hover:text-primary ">
@@ -41,17 +41,14 @@ const NavbarDesktop = ({ categories }) => {
               </span>
             </div>
             {categories.map((category) => (
-              <div
-                key={category.id}
-                className="dropdown text-[#636364] hover:text-primary"
-              >
+              <div key={category.id} className="dropdown  hover:text-primary">
                 {category.subcategories.length > 0 && (
                   <span className=" mx-6  cursor-pointer navLink hover:text-primary ">
                     {category.name}
                   </span>
                 )}
                 {category.subcategories.length > 0 && (
-                  <div className="dropdown-content text-[#636364] text-sm">
+                  <div className="dropdown-content  text-sm">
                     {category.subcategories.map((subcategory) => (
                       <span
                         key={subcategory.id}
@@ -68,12 +65,12 @@ const NavbarDesktop = ({ categories }) => {
             ))}
           </div>
         </div>
-        <div className="flex  	align-middle	p-10 justify-center w-3/12 max-w-sm">
+        <div className="flex  	align-middle	p-10 justify-center w-3/12 max-w-sm opacity-70">
           <div
             className="flex w-4/6 justify-between	"
             onMouseEnter={() => console.log("hover ")}
           >
-            <FiSearch size={25} color="#636364"  />
+            <FiSearch size={25} color="#636364" />
             <NavLink className="navLink" to="/loginPage">
               <span className="cursor-pointer">
                 <FiUser size={25} color="#636364" />

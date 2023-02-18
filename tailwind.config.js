@@ -6,13 +6,14 @@ module.exports = {
       colors: {
         primary: "#dac895",
         secondary: "#636364",
+        text: "#5c5c5c"
       },
       fontFamily: {
         Jost: ["ui-sans-serif", "system-ui"],
         serif: ["ui-serif", "Georgia"],
         mono: ["ui-monospace", "SFMono-Regular"],
-        navbar: ["Roboto"],
-        body: ["Poppins"],
+        body: ["Raleway"],
+        total: ["Work Sans"]
       },
     },
   },
