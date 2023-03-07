@@ -2,10 +2,8 @@ import { useState } from "react";
 import { CONECTION_API } from "../routes/routes";
 
 const useProducts = () => {
-    const [products, setProducts] = useState([]);
-    const [SubCategoryName, setSubCategoryName] = useState({})
 
-  const getProductsBySubcategory = (id) => {
+  const getProductsBySubcategory = async (id) => {
     const url = CONECTION_API + "products/getBySubCategory/" + id;
     const options = {
       method: "GET",
@@ -13,19 +11,41 @@ const useProducts = () => {
     };
 
     fetch(url, options)
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        }
-        return Promise.reject(response.status);
-      })
-      .then((payload) => {
-        setProducts(payload);
-      })
-      .catch((error) => console.log(error));
+    try {
+      const response = await fetch(url, options);
+      if (response.status === 200) {
+        const payload = await response.json();
+        console.log(payload);
+        return payload;
+      }
+      return Promise.reject(response.status);
+    } catch (error) {
+      console.log(error);
+    }
   };
-    
-  const getSubcategoryName = (id) => {
+
+  const getProductById = async (id) => {
+    const url = CONECTION_API + "products/" + id;
+    const options = {
+      method: "GET",
+      headers: new Headers(),
+    };
+
+    fetch(url, options)
+    try {
+      const response = await fetch(url, options);
+      if (response.status === 200) {
+        const payload = await response.json();
+        console.log(payload);
+        return payload;
+      }
+      return Promise.reject(response.status);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getSubcategory = async (id) => {
     const url = CONECTION_API + "subcategories/getById/" + id;
     const options = {
       method: "GET",
@@ -33,25 +53,71 @@ const useProducts = () => {
     };
 
     fetch(url, options)
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        }
-        return Promise.reject(response.status);
-      })
-      .then((payload) => {
-        setSubCategoryName(payload[0]);
-      })
-      .catch((error) => console.log(error));
+    try {
+      const response = await fetch(url, options);
+      if (response.status === 200) {
+        const payload = await response.json();
+        console.log(payload);
+        return payload.shift();
+      }
+      return Promise.reject(response.status);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getOutletProducts = async () => {
+    const url = CONECTION_API + "products/outlet/all";
+    const options = {
+      method: "GET",
+      headers: new Headers(),
+    };
+
+    fetch(url, options);
+    try {
+      const response = await fetch(url, options);
+      if (response.status === 200) {
+        const payload = await response.json();
+        console.log(payload);
+        return payload;
+      }
+      return Promise.reject(response.status);
+    } catch (error) {
+      console.log(error);
+    }
+   
+  };
+
+  const getNovelties = async () => {
+    const url = CONECTION_API + "products/novelties/all";
+    const options = {
+      method: "GET",
+      headers: new Headers(),
+    };
+
+    fetch(url, options);
+    try {
+      const response = await fetch(url, options);
+      if (response.status === 200) {
+        const payload = await response.json();
+        console.log(payload);
+        return payload;
+      }
+      return Promise.reject(response.status);
+    } catch (error) {
+      console.log(error);
+    }
+   
   };
 
   return {
-    products,
-      getProductsBySubcategory,
-      SubCategoryName,
-      getSubcategoryName
+    
+    getProductsBySubcategory,
+    getSubcategory,
+    getProductById,
+    getOutletProducts,
+    getNovelties
   };
 };
-
 
 export default useProducts;

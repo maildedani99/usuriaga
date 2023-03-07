@@ -8,6 +8,7 @@ import ProductsView from "../ProductsView/ProductsView";
 import ProductInfo from "../../Components/ProductInfo/ProductInfo";
 import CartPage from "../CartPage/CartPage";
 import NewsView from "../NewsView/NewsView";
+import OutletView from "../OutletView/OutletView";
 
 const Landing = (props) => {
   return (
@@ -17,9 +18,11 @@ const Landing = (props) => {
         <div className="mt-36">
           <Routes>
             <Route exact path="/" element={<NewsView />} />
-            <Route exact path="/productInfo" element={<ProductInfo />} />
+            <Route exact path="/productInfo/:id" element={<ProductInfo />} />
             <Route exact path="/cartPage" element={<CartPage />} />
             <Route exact path="/newsView" element={<NewsView />} />
+            <Route exact path="//outletView" element={<OutletView />} />
+
             <Route exact path="/loginPage" element={<LoginPage />} />
             <Route exact path="/registerPage" element={<RegisterPage />} />
             <Route exact path="/productsView/:id" element={<ProductsView />} />

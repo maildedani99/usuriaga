@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ProductCard from "../../Components/ProductCard";
 import { useEffect } from "react";
@@ -11,22 +11,35 @@ const ProductsView = (props) => {
   const { id } = useParams();
   const { isDesktop } = useResponsive();
   const {
-    products,
     getProductsBySubcategory,
-    SubCategoryName,
-    getSubcategoryName,
+    getSubcategory,
   } = useProducts();
-  
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(false);
+  const [subCategory, setSubCategory] = useState()
+
   useEffect(() => {
-    id && getProductsBySubcategory(id);
-    id && getSubcategoryName(id);
+    const fetchData = async () => {
+      try {
+        const responseProducts = await getProductsBySubcategory(id);
+        const responseSubcategory = await getSubcategory(id);
+        console.log(responseProducts, responseSubcategory)
+        setProducts(responseProducts)
+        setSubCategory(responseSubcategory)
+      } catch (error) {
+        setError(true);
+      }
+    };
+    fetchData();
     // eslint-disable-next-line
   }, [id]);
 
+
+
   return (
-    <div className={isDesktop ? "flex flex-wrap p-10" : "flex flex-wrap p-10"}>
+    <div className={isDesktop ? "flex flex-wrap p-10" : "flex flex-wrap "}>
       <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
-        <span className="">{SubCategoryName.name}</span>
+        {/* <span className="">{SubCategoryName.name}</span> */}
       </div>
       {products ? (
         products &&
@@ -55,7 +68,7 @@ ProductsView.propTypes = {
   SubCategoryName: PropTypes.object,
   getSubcategoryName: PropTypes.func,
   isDesktop: PropTypes.bool,
-  id: PropTypes.string
+  id: PropTypes.string,
 };
 
 export default ProductsView;

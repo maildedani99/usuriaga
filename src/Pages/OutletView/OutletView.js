@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import ProductCard from "../../Components/ProductCard";
 import useResponsive from "../../Hooks/useResponsive";
-import BeatLoader from "react-spinners/BeatLoader";
+import { useParams } from "react-router-dom";
 import useProducts from "../../Hooks/useProducts";
+import ProductCard from "../../Components/ProductCard";
+import { BeatLoader } from "react-spinners";
 
-const NewsView = () => {
-
+const OutletView = (props) => {
   const { isDesktop } = useResponsive();
-  const { getNovelties } = useProducts();
+  //const { id } = useParams();
+  const { getOutletProducts } = useProducts();
 
+  const [outletProducts, setOutletProducts] = useState([]);
   const [error, setError] = useState(false);
-  const [novelties, setNovelties] = useState([]);
 
- useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getNovelties();
+        const response = await getOutletProducts();
         console.log(response);
-        setNovelties(response);
+        setOutletProducts(response);
       } catch (error) {
         setError(true);
       }
@@ -26,16 +27,26 @@ const NewsView = () => {
     fetchData();
     // eslint-disable-next-line
   }, []);
+    
+    useEffect(() => {
+        outletProducts && setError(false)
+    },[outletProducts])
+
+  console.log(outletProducts);
 
   return (
-    <div
-      className={isDesktop ? "flex flex-wrap p-10  " : "flex flex-wrap px-4  "}
-    >
+    <div className={isDesktop ? "flex flex-wrap p-10" : "flex flex-wrap "}>
       <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
-        <span className="">Novedades</span>
+        <span className="">Outlet</span>
       </div>
-      {novelties ? (
-        novelties.map((product) => (
+      {error && (
+        <div className="flex mx-auto mt-32" >
+          <h1>Ups! Se ha producido un error en el servidor</h1>
+        </div>
+      )}
+      {outletProducts ? (
+        outletProducts &&
+        outletProducts.map((product) => (
           <ProductCard product={product} key={product.id} />
         ))
       ) : (
@@ -54,10 +65,6 @@ const NewsView = () => {
   );
 };
 
-NewsView.propTypes = {
-  isDesktop: PropTypes.bool,
-  products: PropTypes.object,
-  setProducts: PropTypes.func
-};
+OutletView.propTypes = {};
 
-export default NewsView;
+export default OutletView;

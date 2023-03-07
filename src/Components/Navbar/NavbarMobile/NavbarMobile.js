@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { HeaderWrapper, MenuButtonWrapper } from "./styles";
 import NavMenu from "./NavMenu";
 import MenuButton from "./MenuButton";
-import logo from "../../../assets/logonegro.svg";
+import logo from "../../../assets/logogrisprueba.png";
 import NavSubMenu from "./NavSubMenu";
 import { useNavigate } from "react-router-dom";
 

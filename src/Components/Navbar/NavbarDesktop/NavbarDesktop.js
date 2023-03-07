@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import logo from "../../../assets/logonegro.svg";
+import logo from "../../../assets/logogrisprueba.png";
 import "../navbar.css";
 import { FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -10,10 +10,13 @@ const NavbarDesktop = ({ categories }) => {
 
   const subcategoryHandleClick = (id) => {
     navigate(`/productsView/${id}`);
-    console.log(`/productsView/${id}`);
   };
-  const NewsHandleClick = () => {
+  const newsHandleClick = () => {
     navigate("/newsView");
+  };
+
+  const outletHandleClick = () => {
+    navigate("/outletView");
   };
 
   return (
@@ -22,8 +25,10 @@ const NavbarDesktop = ({ categories }) => {
         className="flex  flex-1 border-b 	"
         style={{ backgroundColor: "#dac895" }}
       >
-        <div className="flex flex-1 w-3/5 justify-center text-white p-1 	 tracking-widest ">
-          <span className="text-white">ENVÍOS GRATIS para compras superiores a 60€</span>
+        <div className="flex flex-1 w-3/5 justify-center  p-1 	 tracking-widest ">
+          <span className="">
+            ENVÍOS GRATIS para compras superiores a 60€
+          </span>
         </div>
       </div>
       <div className="flex flex-row flex-1 border-b">
@@ -34,15 +39,18 @@ const NavbarDesktop = ({ categories }) => {
           <div className=" self-center">
             <div
               className="dropdown  hover:text-primary"
-              onClick={NewsHandleClick}
+              onClick={newsHandleClick}
             >
-              <span className=" mx-6   cursor-pointer navLink hover:text-primary ">
-                Novedades
-              </span>
+              <div className="bg-[#dac895] rounded-full  p-0.5	">
+                <span className=" mx-6   cursor-pointer navLink hover:text-white ">
+                  Novedades
+                </span>
+              </div>
             </div>
             {categories.map((category) => (
+              
               <div key={category.id} className="dropdown  hover:text-primary">
-                {category.subcategories.length > 0 && (
+                {(category.subcategories.length > 0 && category.name !== "Outlet")  && (
                   <span className=" mx-6  cursor-pointer navLink hover:text-primary ">
                     {category.name}
                   </span>
@@ -63,6 +71,16 @@ const NavbarDesktop = ({ categories }) => {
                 )}
               </div>
             ))}
+            <div
+              className="dropdown  hover:text-primary"
+              onClick={outletHandleClick}
+            >
+              <div className="	">
+                <span className=" mx-6   cursor-pointer navLink hover:text-primary ">
+                  Outlet
+                </span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex  	align-middle	p-10 justify-center w-3/12 max-w-sm opacity-70">
