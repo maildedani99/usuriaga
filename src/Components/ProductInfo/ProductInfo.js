@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import { useLocation, useParams } from "react-router-dom";
@@ -10,14 +10,26 @@ import useProducts from "../../Hooks/useProducts";
 
 const ProductInfo = (props) => {
   const { isDesktop, isMobile } = useResponsive();
-  const { getProductById, product } = useProducts();
+  const { getProductById } = useProducts();
+  const [error, setError] = useState(false);
   //const location = useLocation();
   let { id } = useParams();
 
+  const [product, setProduct] = useState({});
+
   useEffect(() => {
-    id && getProductById(id)
-  
-},[])
+    const fetchData = async () => {
+      try {
+        const response = await getProductById(id);
+        console.log(response);
+        setProduct(response);
+      } catch (error) {
+        setError(true);
+      }
+    };
+    fetchData();
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
@@ -30,7 +42,7 @@ const ProductInfo = (props) => {
 ProductInfo.propTypes = {
   isDesktop: PropTypes.bool,
   isMobile: PropTypes.bool,
-  product: PropTypes.object
+  product: PropTypes.object,
 };
 
 export default ProductInfo;

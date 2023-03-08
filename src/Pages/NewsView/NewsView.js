@@ -27,6 +27,8 @@ const NewsView = () => {
     // eslint-disable-next-line
   }, []);
 
+ 
+
   return (
     <div
       className={isDesktop ? "flex flex-wrap p-10  " : "flex flex-wrap px-4  "}

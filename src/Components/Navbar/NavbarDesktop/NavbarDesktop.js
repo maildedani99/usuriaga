@@ -15,6 +15,10 @@ const NavbarDesktop = ({ categories }) => {
     navigate("/newsView");
   };
 
+  const CategoriesHandleClick = (e) => {
+    navigate(e);
+  };
+
   const outletHandleClick = () => {
     navigate("/outletView");
   };
@@ -26,9 +30,7 @@ const NavbarDesktop = ({ categories }) => {
         style={{ backgroundColor: "#dac895" }}
       >
         <div className="flex flex-1 w-3/5 justify-center  p-1 	 tracking-widest ">
-          <span className="">
-            ENVÍOS GRATIS para compras superiores a 60€
-          </span>
+          <span className="">ENVÍOS GRATIS para compras superiores a 60€</span>
         </div>
       </div>
       <div className="flex flex-row flex-1 border-b">
@@ -48,13 +50,13 @@ const NavbarDesktop = ({ categories }) => {
               </div>
             </div>
             {categories.map((category) => (
-              
               <div key={category.id} className="dropdown  hover:text-primary">
-                {(category.subcategories.length > 0 && category.name !== "Outlet")  && (
-                  <span className=" mx-6  cursor-pointer navLink hover:text-primary ">
-                    {category.name}
-                  </span>
-                )}
+                {category.subcategories.length > 0 &&
+                  category.name !== "Outlet" && (
+                    <span className=" mx-6  cursor-pointer navLink hover:text-primary ">
+                      {category.name}
+                    </span>
+                  )}
                 {category.subcategories.length > 0 && (
                   <div className="dropdown-content  text-sm">
                     {category.subcategories.map((subcategory) => (
@@ -73,13 +75,28 @@ const NavbarDesktop = ({ categories }) => {
             ))}
             <div
               className="dropdown  hover:text-primary"
-              onClick={outletHandleClick}
             >
               <div className="	">
-                <span className=" mx-6   cursor-pointer navLink hover:text-primary ">
-                  Outlet
+                <span className=" mx-6   cursor-pointer navLink hover:text-primary "
+                  id="/discountView"
+                  onClick={(e) => CategoriesHandleClick(e.target.id)}
+                >
+                  Rebajas
                 </span>
               </div>
+            </div>
+            <div
+              className="dropdown  hover:text-primary"
+              name="/outletView"
+              
+            >
+              <span
+                id="/outletView"
+                className=" mx-6   cursor-pointer navLink hover:text-primary "
+                onClick={(e) => CategoriesHandleClick(e.target.id)}
+              >
+                Outlet
+              </span>
             </div>
           </div>
         </div>

@@ -39,7 +39,7 @@ const ProductsView = (props) => {
   return (
     <div className={isDesktop ? "flex flex-wrap p-10" : "flex flex-wrap "}>
       <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
-        {/* <span className="">{SubCategoryName.name}</span> */}
+        <span className="">{subCategory && subCategory.name}</span>
       </div>
       {products ? (
         products &&

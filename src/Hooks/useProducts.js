@@ -37,7 +37,7 @@ const useProducts = () => {
       if (response.status === 200) {
         const payload = await response.json();
         console.log(payload);
-        return payload;
+        return payload.shift();
       }
       return Promise.reject(response.status);
     } catch (error) {
@@ -110,13 +110,35 @@ const useProducts = () => {
    
   };
 
+  const getDiscounts = async (id) => {
+    const url = CONECTION_API + "products/discounts/all" ;
+    const options = {
+      method: "GET",
+      headers: new Headers(),
+    };
+
+    fetch(url, options)
+    try {
+      const response = await fetch(url, options);
+      if (response.status === 200) {
+        const payload = await response.json();
+        console.log(payload);
+        return payload;
+      }
+      return Promise.reject(response.status);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     
     getProductsBySubcategory,
     getSubcategory,
     getProductById,
     getOutletProducts,
-    getNovelties
+    getNovelties,
+    getDiscounts
   };
 };
 

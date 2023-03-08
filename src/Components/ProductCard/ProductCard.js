@@ -5,7 +5,7 @@ import useResponsive from "../../Hooks/useResponsive";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  
+
   const { isDesktop } = useResponsive();
 
   /* const handleClick = () => {
@@ -26,11 +26,22 @@ const ProductCard = ({ product }) => {
           ? "flex flex-col w-3/12 p-4 justify-start tracking-wider	 text-[#515151]	cursor-pointer mt-8 "
           : "flex flex-col w-6/12 p-2 justify-center cursor-pointer mt-8 tracking-wider	 text-[#515151]"
       }
-      onClick={()=>handleClick(product.id)}
+      onClick={() => handleClick(product.id)}
     >
       <img src={product.images[0].url && product.images[0].url} alt="foto" />
       <span className=" text-base	 mx-auto mt-2">{product.name}</span>
-      <span className=" text-base	 mx-auto mt-2 ">{product.price} €</span>
+      {product.discount === false || product.reduced_price !== 0 ? (
+        <div className="flex w-2/6 mx-auto">
+          <span className=" text-base	 mx-auto mt-2 line-through">
+            {product.price} €{" "}
+          </span>
+          <span className=" text-base	 mx-auto mt-2 text-red-600  ">
+            {product.reduced_price} €
+          </span>
+        </div>
+      ) : (
+        <span className=" text-base	 mx-auto mt-2 ">{product.price} €</span>
+      )}
     </div>
   );
 };
