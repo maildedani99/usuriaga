@@ -26,8 +26,10 @@ const NavbarMobile = ({ categories }) => {
   const subcategoryHandleClick = (id) => {
     navigate(`/productsView/${id}`);
   };
-  const NewsHandleClick = () => {
-    navigate("/newsView");
+
+
+  const CategoriesHandleClick = (id) => {
+    navigate(`/productsView/${id}`);
   };
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const NavbarMobile = ({ categories }) => {
           subMenuOpen={subMenuOpen}
           setSubMenuOpen={setSubMenuOpen}
           onSubMenuOpen={onSubMenuOpen}
-          NewsHandleClick={NewsHandleClick}
+          CategoriesHandleClick={CategoriesHandleClick}
           switchMenuOpen={switchMenuOpen}
         />
         <div className=" my-auto ">

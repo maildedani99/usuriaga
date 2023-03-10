@@ -4,6 +4,7 @@ import ProductCard from "../../Components/ProductCard";
 import useResponsive from "../../Hooks/useResponsive";
 import BeatLoader from "react-spinners/BeatLoader";
 import useProducts from "../../Hooks/useProducts";
+import ElementsView from "../../Components/ProductsList/ProductsList";
 
 const NewsView = () => {
 
@@ -30,29 +31,7 @@ const NewsView = () => {
  
 
   return (
-    <div
-      className={isDesktop ? "flex flex-wrap p-10  " : "flex flex-wrap px-4  "}
-    >
-      <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
-        <span className="">Novedades</span>
-      </div>
-      {novelties ? (
-        novelties.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))
-      ) : (
-        <div className="flex flex-1">
-          <div className="mx-auto mt-48">
-            <BeatLoader
-              color="#dac895"
-              size={50}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          </div>
-        </div>
-      )}
-    </div>
+    < ElementsView products={novelties} />
   );
 };
 

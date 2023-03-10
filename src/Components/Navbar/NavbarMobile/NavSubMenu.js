@@ -10,7 +10,7 @@ const NavSubMenu = ({
   switchMenuOpen
 }) => {
 
-  const onClickSubCategory = (id) => {
+  const onClickCategories = (id) => {
     subcategoryHandleClick(id)
     setSubMenuOpen(false)
     switchMenuOpen()
@@ -25,7 +25,7 @@ const NavSubMenu = ({
               key={subCategory.id}
               id={subCategory.id}
               className="text-6xl mt-16 mx-6 capitalize cursor-pointer"
-              onClick={(e) => onClickSubCategory(e.target.id)}
+              onClick={(e) => onClickCategories(e.target.id)}
             >
               {subCategory.name}
             </div>

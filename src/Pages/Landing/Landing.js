@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Navbar from "../../Components/Navbar";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import LoginPage from "../LoginPage/LoginPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Redirect, Navigate } from "react-router-dom";
 import ProductsView from "../ProductsView/ProductsView";
 import ProductInfo from "../../Components/ProductInfo/ProductInfo";
 import CartPage from "../CartPage/CartPage";
@@ -18,15 +18,12 @@ const Landing = (props) => {
         <Navbar />
         <div className="mt-36">
           <Routes>
-            <Route exact path="/" element={<NewsView />} />
+            <Route exact path="/" element={  <Navigate to="/productsView/novelties" replace={true} />} />
+            <Route exact path="/productsView/:id" element={<ProductsView />} />
             <Route exact path="/productInfo/:id" element={<ProductInfo />} />
             <Route exact path="/cartPage" element={<CartPage />} />
-            <Route exact path="/newsView" element={<NewsView />} />
-            <Route exact path="/outletView" element={<OutletView />} />
-            <Route exact path="/discountView" element={<DiscountView />} />
             <Route exact path="/loginPage" element={<LoginPage />} />
             <Route exact path="/registerPage" element={<RegisterPage />} />
-            <Route exact path="/productsView/:id" element={<ProductsView />} />
           </Routes>
         </div>
       </div>

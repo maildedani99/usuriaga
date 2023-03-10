@@ -4,28 +4,58 @@ import ProductCard from "../../Components/ProductCard";
 import { useEffect } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
 import { useParams } from "react-router-dom";
-import useResponsive from "../../Hooks/useResponsive";
 import useProducts from "../../Hooks/useProducts";
+import ProductsList from "../../Components/ProductsList/ProductsList";
 
 const ProductsView = (props) => {
   const { id } = useParams();
-  const { isDesktop } = useResponsive();
   const {
     getProductsBySubcategory,
     getSubcategory,
+    getNovelties,
+    getDiscounts,
+    getOutletProducts,
   } = useProducts();
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(false);
-  const [subCategory, setSubCategory] = useState()
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
+    console.log(isNaN(id));
     const fetchData = async () => {
       try {
-        const responseProducts = await getProductsBySubcategory(id);
-        const responseSubcategory = await getSubcategory(id);
-        console.log(responseProducts, responseSubcategory)
-        setProducts(responseProducts)
-        setSubCategory(responseSubcategory)
+        if (!isNaN(id)) {
+          const responseProducts = await getProductsBySubcategory(id);
+          const responseSubcategory = await getSubcategory(id);
+          console.log(responseProducts, responseSubcategory);
+          setProducts(responseProducts);
+          setTitle(responseSubcategory.name);
+        } else {
+          switch (id) {
+            case "novelties":
+              const responseNovelties = await getNovelties();
+              setProducts(responseNovelties);
+              setTitle("Novedades");
+              break;
+            case "discount":
+              const responseDiscount = await getDiscounts();
+              setProducts(responseDiscount);
+              setTitle("Rebajas");
+              break;
+            case "outlet":
+              const responseOutlet = await getOutletProducts();
+              setProducts(responseOutlet);
+              setTitle("Outlet");
+              break;
+            default:
+              const responseProducts = await getProductsBySubcategory(id);
+              const responseSubcategory = await getSubcategory(id);
+              console.log(responseProducts, responseSubcategory);
+              setProducts(responseProducts);
+              setTitle(responseSubcategory.name);
+              break;
+          }
+        }
       } catch (error) {
         setError(true);
       }
@@ -34,32 +64,7 @@ const ProductsView = (props) => {
     // eslint-disable-next-line
   }, [id]);
 
-
-
-  return (
-    <div className={isDesktop ? "flex flex-wrap p-10" : "flex flex-wrap "}>
-      <div className="flex text-5xl justify-center w-full tracking-wider capitalize font-light		text-[#515151] text-center">
-        <span className="">{subCategory && subCategory.name}</span>
-      </div>
-      {products ? (
-        products &&
-        products.map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))
-      ) : (
-        <div className="flex flex-1">
-          <div className="mx-auto mt-48">
-            <BeatLoader
-              color="#dac895"
-              size={50}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          </div>
-        </div>
-      )}
-    </div>
-  );
+  return <ProductsList products={products} title={title} />;
 };
 
 ProductsView.propTypes = {

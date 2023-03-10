@@ -8,19 +8,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 const NavbarDesktop = ({ categories }) => {
   const navigate = useNavigate();
 
-  const subcategoryHandleClick = (id) => {
+ 
+
+  const CategoriesHandleClick = (id) => {
     navigate(`/productsView/${id}`);
-  };
-  const newsHandleClick = () => {
-    navigate("/newsView");
-  };
-
-  const CategoriesHandleClick = (e) => {
-    navigate(e);
-  };
-
-  const outletHandleClick = () => {
-    navigate("/outletView");
   };
 
   return (
@@ -34,17 +25,18 @@ const NavbarDesktop = ({ categories }) => {
         </div>
       </div>
       <div className="flex flex-row flex-1 border-b">
-        <div className=" p-6 w-3/12	my-auto ">
+        <div className=" p-6 w-2/12	my-auto ">
           <img className="mx-auto" src={logo} alt="Usuriaga" width="250" />
         </div>
-        <div className="flex w-6/12 justify-center capitalize tracking-wide text-lg font-[400]		 ">
+        <div className="flex w-8/12 justify-center capitalize tracking-wide text-lg font-[400]		 ">
           <div className=" self-center">
-            <div
-              className="dropdown  hover:text-primary"
-              onClick={newsHandleClick}
-            >
-              <div className="bg-[#dac895] rounded-full  p-0.5	">
-                <span className=" mx-6   cursor-pointer navLink hover:text-white ">
+            <div className="dropdown  hover:text-primary">
+              <div className="bg-[#dac895] rounded-full ">
+                <span
+                  id="novelties"
+                  onClick={(e) => CategoriesHandleClick(e.target.id)}
+                  className=" mx-6   cursor-pointer navLink hover:text-white  "
+                >
                   Novedades
                 </span>
               </div>
@@ -63,7 +55,7 @@ const NavbarDesktop = ({ categories }) => {
                       <span
                         key={subcategory.id}
                         id={subcategory.id}
-                        onClick={(e) => subcategoryHandleClick(e.target.id)}
+                        onClick={(e) => CategoriesHandleClick(e.target.id)}
                         className=" cursor-pointer navLink hover:text-primary block"
                       >
                         {subcategory.name}
@@ -73,25 +65,20 @@ const NavbarDesktop = ({ categories }) => {
                 )}
               </div>
             ))}
-            <div
-              className="dropdown  hover:text-primary"
-            >
+            <div className="dropdown  hover:text-primary">
               <div className="	">
-                <span className=" mx-6   cursor-pointer navLink hover:text-primary "
-                  id="/discountView"
+                <span
+                  className=" mx-6   cursor-pointer navLink hover:text-primary "
+                  id="discount"
                   onClick={(e) => CategoriesHandleClick(e.target.id)}
                 >
                   Rebajas
                 </span>
               </div>
             </div>
-            <div
-              className="dropdown  hover:text-primary"
-              name="/outletView"
-              
-            >
+            <div className="dropdown  hover:text-primary" name="/outletView">
               <span
-                id="/outletView"
+                id="outlet"
                 className=" mx-6   cursor-pointer navLink hover:text-primary "
                 onClick={(e) => CategoriesHandleClick(e.target.id)}
               >
@@ -100,9 +87,9 @@ const NavbarDesktop = ({ categories }) => {
             </div>
           </div>
         </div>
-        <div className="flex  	align-middle	p-10 justify-center w-3/12 max-w-sm opacity-70">
+        <div className="flex  	py-10 px-4 justify-between w-2/12 max-w-sm opacity-70">
           <div
-            className="flex w-4/6 justify-between	"
+            className="flex flex-1 w-4/6 justify-between max-w-[225px]	"
             onMouseEnter={() => console.log("hover ")}
           >
             <FiSearch size={25} color="#636364" />
