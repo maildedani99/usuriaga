@@ -38,6 +38,7 @@ const SummaryCart = (props) => {
           <input
             className=" flex flex-1 p-4 text-xl text-white   text-center mb-8 capitalize "
             value="Comprar"
+            readOnly
             style={{ backgroundColor: "#dac895" }}
           />
         </div>

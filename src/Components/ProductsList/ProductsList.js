@@ -14,7 +14,6 @@ const ProductsList = ({ products, title }) => {
       <span className="">{title}</span>
     </div>
     {products ? (
-      products &&
       products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))

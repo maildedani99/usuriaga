@@ -1,15 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Carousel } from "react-responsive-carousel";
+import { CartContext } from "../../../Hooks/CartContext";
 
 const DesktopLayout = ({ product }) => {
+  const { addItemToCart } = useContext(CartContext);
+
+  const AddItemToCartHandleClick = (event) => {
+    event.stopPropagation();
+    addItemToCart(product);
+  };
+
   return (
     <div className="flex  w-5/6  mt-16 mx-auto justify-evenly 	 	text-[#636364]">
       <div className=" flex 	w-5/12  top-10 ">
         <Carousel useKeyboardArrows={false}>
           {product.images &&
-            product.images.map((image, index) => (
-              
+            product.images.map((image) => (
               <img key={image.id} src={image.url} alt="foto" />
             ))}
         </Carousel>
@@ -21,25 +28,29 @@ const DesktopLayout = ({ product }) => {
           <span className="   font-body text-base tracking-wider	font-light	  	mt-4">
             {product.description}
           </span>
-        <div className="flex flex-col  w-6/6 mt-8 text-lg font-medium ">
-          Tallas
-          <div className="flex   ">
-            {product.sizes &&
-                product.sizes.map((size) =>
-                  <div key={size.id} className="border mr-3 p-2 mt-2 font-normal
-                  " >
-                  <span className="mr-3  mx-auto "> {size.name} </span>
+          <div className="flex flex-col  w-6/6 mt-8 text-lg font-medium ">
+            Tallas
+            <div className="flex   ">
+              {product.sizes &&
+                product.sizes.map((size) => (
+                  <div
+                    key={size.id}
+                    className="border mr-3 p-2 mt-2 font-normal
+                  "
+                  >
+                    <span className="mr-3  mx-auto "> {size.name} </span>
                   </div>
-                )}
+                ))}
+            </div>
+            <div className="flex "></div>
           </div>
-          <div className="flex "></div>
-        </div>
         </div>
         <div className="flex w-5/6 p-8 mx-auto">
           <input
             className=" flex flex-1 p-4 text-xl text-white  cursor-pointer text-center mb-8 capitalize "
             defaultValue="Comprar"
-            disabled
+            readOnly
+            onClick={AddItemToCartHandleClick}
             style={{ backgroundColor: "#dac895" }}
           />
         </div>

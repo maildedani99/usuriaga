@@ -20,39 +20,51 @@ const ProductsView = (props) => {
   const [error, setError] = useState(false);
   const [title, setTitle] = useState("");
 
+  const onSubcategoryCase = async () => {
+    const responseProducts = await getProductsBySubcategory(id);
+    const responseSubcategory = await getSubcategory(id);
+    console.log(responseProducts, responseSubcategory);
+    setProducts(responseProducts);
+    setTitle(responseSubcategory.name);
+  };
+
+  const onNoveltiesCase = async () => {
+    const responseNovelties = await getNovelties();
+    setProducts(responseNovelties);
+    setTitle("Novedades");
+  };
+
+  const onDiscountCase = async () => {
+    const responseDiscount = await getDiscounts();
+    setProducts(responseDiscount);
+    setTitle("Rebajas");
+  };
+
+  const onOutletCase = async () => {
+    const responseOutlet = await getOutletProducts();
+    setProducts(responseOutlet);
+    setTitle("Outlet");
+  };
+
   useEffect(() => {
     console.log(isNaN(id));
     const fetchData = async () => {
       try {
         if (!isNaN(id)) {
-          const responseProducts = await getProductsBySubcategory(id);
-          const responseSubcategory = await getSubcategory(id);
-          console.log(responseProducts, responseSubcategory);
-          setProducts(responseProducts);
-          setTitle(responseSubcategory.name);
+          await onSubcategoryCase();
         } else {
           switch (id) {
             case "novelties":
-              const responseNovelties = await getNovelties();
-              setProducts(responseNovelties);
-              setTitle("Novedades");
+             await onNoveltiesCase();
               break;
             case "discount":
-              const responseDiscount = await getDiscounts();
-              setProducts(responseDiscount);
-              setTitle("Rebajas");
+              await onDiscountCase();
               break;
             case "outlet":
-              const responseOutlet = await getOutletProducts();
-              setProducts(responseOutlet);
-              setTitle("Outlet");
+              await onOutletCase();
               break;
             default:
-              const responseProducts = await getProductsBySubcategory(id);
-              const responseSubcategory = await getSubcategory(id);
-              console.log(responseProducts, responseSubcategory);
-              setProducts(responseProducts);
-              setTitle(responseSubcategory.name);
+              await onNoveltiesCase();
               break;
           }
         }

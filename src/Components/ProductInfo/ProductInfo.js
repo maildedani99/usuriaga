@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import { useLocation, useParams } from "react-router-dom";
@@ -7,15 +7,20 @@ import useResponsive from "../../Hooks/useResponsive";
 import MobileLayout from "./MobileLayout/MobileLayout";
 import DesktopLayout from "./DesktopLayout/DesktopLayout";
 import useProducts from "../../Hooks/useProducts";
+import { CartContext } from "../../Hooks/CartContext";
 
 const ProductInfo = (props) => {
   const { isDesktop, isMobile } = useResponsive();
   const { getProductById } = useProducts();
+  const { cartItems, addItemToCart } = useContext(CartContext);
+
   const [error, setError] = useState(false);
   //const location = useLocation();
   let { id } = useParams();
 
   const [product, setProduct] = useState({});
+
+ 
 
   useEffect(() => {
     const fetchData = async () => {

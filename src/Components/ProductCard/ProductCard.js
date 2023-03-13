@@ -1,23 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import { useNavigate, useParams } from "react-router-dom";
 import useResponsive from "../../Hooks/useResponsive";
+import { CartContext } from "../../Hooks/CartContext";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+  const { cartItems, addItemToCart } = useContext(CartContext);
 
   const { isDesktop } = useResponsive();
 
-  /* const handleClick = () => {
-    navigate("/productInfo", {
-      state: {
-        product: product,
-      },
-    });
-  }; */
-  const handleClick = (id) => {
+  const ProductHandleClick = (id) => {
     navigate(`/productInfo/${id}`);
   };
+
+ 
 
   return (
     <div
@@ -26,7 +23,7 @@ const ProductCard = ({ product }) => {
           ? "flex flex-col w-3/12 p-4 justify-start tracking-wider	 text-[#515151]	cursor-pointer mt-8 "
           : "flex flex-col w-6/12 p-2 justify-center cursor-pointer mt-8 tracking-wider	 text-[#515151]"
       }
-      onClick={() => handleClick(product.id)}
+      onClick={() => ProductHandleClick(product.id)}
     >
       <img src={product.images[0].url && product.images[0].url} alt="foto" />
       <span className=" text-base	 mx-auto mt-2">{product.name}</span>
@@ -42,6 +39,7 @@ const ProductCard = ({ product }) => {
       ) : (
         <span className=" text-base	 mx-auto mt-2 ">{product.price} €</span>
       )}
+     
     </div>
   );
 };
